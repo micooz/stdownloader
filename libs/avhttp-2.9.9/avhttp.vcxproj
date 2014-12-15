@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A7156722-2897-4EEA-B38F-5D398DEBB265}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>avhttp</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\proj\cpp\MyPocket\avhttp\include;D:\libs\boost_1_56_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\proj\cpp\MyPocket\avhttp\include;D:\libs\boost_1_56_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\avhttp-2.9.9\.gitconfig" />
+    <None Include="..\avhttp-2.9.9\AUTHORS" />
+    <None Include="..\avhttp-2.9.9\Jamfile" />
+    <None Include="..\avhttp-2.9.9\LICENSE" />
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include=".travis.yml" />
+    <None Include="project-root.jam" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="example\async_http_stream.cpp" />
+    <ClCompile Include="example\imagebin.cpp" />
+    <ClCompile Include="example\ip138.cpp" />
+    <ClCompile Include="example\multi_download.cpp" />
+    <ClCompile Include="example\sync_http_stream.cpp" />
+    <ClCompile Include="test\async_proxy_test.cpp" />
+    <ClCompile Include="test\avhttp_include.cpp" />
+    <ClCompile Include="test\cookie_test.cpp" />
+    <ClCompile Include="test\multi_avhttp_test.cpp" />
+    <ClCompile Include="test\multi_download_test.cpp" />
+    <ClCompile Include="test\percent_encoding_test.cpp" />
+    <ClCompile Include="test\sync_proxy_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\avhttp.hpp" />
+    <ClInclude Include="include\avhttp\async_read_body.hpp" />
+    <ClInclude Include="include\avhttp\bencode.hpp" />
+    <ClInclude Include="include\avhttp\bitfield.hpp" />
+    <ClInclude Include="include\avhttp\completion_condition.hpp" />
+    <ClInclude Include="include\avhttp\cookie.hpp" />
+    <ClInclude Include="include\avhttp\default_storage.hpp" />
+    <ClInclude Include="include\avhttp\detail\abi_prefix.hpp" />
+    <ClInclude Include="include\avhttp\detail\abi_suffix.hpp" />
+    <ClInclude Include="include\avhttp\detail\error_codec.hpp" />
+    <ClInclude Include="include\avhttp\detail\escape_string.hpp" />
+    <ClInclude Include="include\avhttp\detail\handler_type_requirements.hpp" />
+    <ClInclude Include="include\avhttp\detail\io.hpp" />
+    <ClInclude Include="include\avhttp\detail\parsers.hpp" />
+    <ClInclude Include="include\avhttp\detail\socket_type.hpp" />
+    <ClInclude Include="include\avhttp\detail\ssl_stream.hpp" />
+    <ClInclude Include="include\avhttp\detail\utf8.hpp" />
+    <ClInclude Include="include\avhttp\entry.hpp" />
+    <ClInclude Include="include\avhttp\file.hpp" />
+    <ClInclude Include="include\avhttp\file_upload.hpp" />
+    <ClInclude Include="include\avhttp\http_stream.hpp" />
+    <ClInclude Include="include\avhttp\impl\src.hpp" />
+    <ClInclude Include="include\avhttp\logging.hpp" />
+    <ClInclude Include="include\avhttp\multi_download.hpp" />
+    <ClInclude Include="include\avhttp\post_form.hpp" />
+    <ClInclude Include="include\avhttp\rangefield.hpp" />
+    <ClInclude Include="include\avhttp\settings.hpp" />
+    <ClInclude Include="include\avhttp\storage_interface.hpp" />
+    <ClInclude Include="include\avhttp\url.hpp" />
+    <ClInclude Include="include\avhttp\version.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

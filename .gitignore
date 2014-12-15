@@ -1,0 +1,11 @@
+#files
+*.suo
+*.sdf
+*.obj
+*.o
+
+
+#folders
+LIB Debug/
+Debug/
+Release/
