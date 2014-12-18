@@ -3,7 +3,8 @@
 *.sdf
 *.obj
 *.o
-
+*.opensdf
+*.user
 
 #folders
 LIB Debug/

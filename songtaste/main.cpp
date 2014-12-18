@@ -7,7 +7,7 @@ using namespace std;
 const string help = "this program cannot be run directly, please give me some args!";
 
 vector<string> sub_routines = {
-    "fetch"
+    "list", "fetch"
 };
 
 int main(int argc, char *argv[]) {

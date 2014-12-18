@@ -33,9 +33,6 @@
     <ClCompile Include="example\async_http_stream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="example\imagebin.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="example\ip138.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

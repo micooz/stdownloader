@@ -20,8 +20,8 @@ namespace songtaste {
 
     Configure*
         Configure::getInstance() {
-        static Configure* instance;
-        return instance;
+        static Configure instance;
+        return &instance;
     }
 
     const Config&
