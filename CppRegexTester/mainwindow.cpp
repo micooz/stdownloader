@@ -21,6 +21,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_linePattern_textChanged(const QString &arg1)
 {
     std::string src = ui->plainSrc->document()->toPlainText().toStdString();
+
+    if(arg1.isEmpty()){
+        return;
+    }
+
     _result.clear();
     try{
         boost::smatch matches;
@@ -80,4 +85,13 @@ void MainWindow::on_checkBox_stateChanged(int arg1)
 
         ui->plainResult->setDocument(new QTextDocument(QString(rst.c_str())));
     }
+}
+
+void MainWindow::on_linePattern_editingFinished()
+{
+    QString pattern = ui->linePattern->text();
+    pattern.replace("\\","\\\\");
+    pattern.replace("\"","\\\"");
+
+    ui->lineCstyle->setText(pattern);
 }

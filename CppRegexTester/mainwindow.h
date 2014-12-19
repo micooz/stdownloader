@@ -21,6 +21,8 @@ private slots:
 
     void on_checkBox_stateChanged(int arg1);
 
+    void on_linePattern_editingFinished();
+
 private:
     Ui::MainWindow *ui;
     std::vector<std::string> _result;
