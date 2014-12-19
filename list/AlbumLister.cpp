@@ -13,7 +13,7 @@ namespace songtaste {
         }
     }
 
-    IListStruct*
+    ListCollection
         AlbumLister::getList() {
         boost::system::error_code ec;
         _http.open(_url_recommend, ec);
@@ -23,9 +23,6 @@ namespace songtaste {
         std::stringstream ss;
         ss << &_http;
 
-        //std::ofstream out("html.out");
-        //out << ss.str();
-        //out.close();
         std::string html = ss.str();
 
         boost::regex pattern(_regex_pattern);
@@ -33,20 +30,30 @@ namespace songtaste {
         std::string::const_iterator s = html.begin();
         std::string::const_iterator e = html.end();
 
-        std::vector<std::string> _result;
+        ListCollection _result;
 
         while (boost::regex_search(s, e, matches, pattern)) {
-            for (size_t i = 0; i < matches.size(); ++i) {
-                if (matches[i].matched) {
-                    _result.push_back(matches.str(i));
-                    _result.push_back("\n");
-                }
-            }
-            s = matches[0].second;
+            BOOST_ASSERT(matches.size() == 10);
+
+            ListStruct item(new AlbumListStruct);
+            //matches.str(0) is the original string
+            item->songname = matches.str(1);
+            item->songid = matches.str(2);
+            item->uname = matches.str(3);
+            item->uid = matches.str(4);
+            item->uicon = matches.str(5);
+            item->recwidth = matches.str(6);
+            item->rateuid = matches.str(7);
+            item->ratedt = matches.str(8);
+            item->rateuname = matches.str(9);
+
+            _result.push_back(item);
+
+            //iterate next matching
+            s = matches[9].second;
         }
 
-        BOOST_ASSERT(matches.size() > 0);
-        return nullptr;
+        return _result;
     }
 
     AlbumLister::~AlbumLister() {

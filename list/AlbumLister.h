@@ -13,6 +13,7 @@
 
 #include <avhttp.hpp>
 #include "ILister.h"
+#include "AlbumListStruct.h"
 
 namespace songtaste {
 
@@ -22,7 +23,7 @@ namespace songtaste {
         explicit AlbumLister();
         ~AlbumLister();
 
-        IListStruct* getList();
+        ListCollection getList();
     private:
         std::string _url_recommend;
         std::string _regex_pattern;

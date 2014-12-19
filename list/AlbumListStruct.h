@@ -19,6 +19,9 @@ namespace songtaste {
     public:
         explicit AlbumListStruct();
         ~AlbumListStruct();
+
+
+
     };
 
 }
