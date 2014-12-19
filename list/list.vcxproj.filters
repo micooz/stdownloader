@@ -39,6 +39,12 @@
     <ClCompile Include="RecommendListStruct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CategoryListStruct.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CategoryLister.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlbumLister.h">
@@ -60,6 +66,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RecommendListStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CategoryListStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CategoryLister.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

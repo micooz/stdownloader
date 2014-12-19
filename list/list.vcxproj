@@ -51,7 +51,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WIN32_WINDOWS;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINDOWS;_WINSOCK_DEPRECATED_NO_WARNINGS;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\proj\cpp\StDownloader\public;D:\proj\cpp\StDownloader\libs\jsoncpp-0.7.0\include;D:\libs\boost_1_56_0;D:\proj\cpp\StDownloader\libs\avhttp-2.9.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -70,7 +70,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_WIN32_WINDOWS;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINDOWS;_WINSOCK_DEPRECATED_NO_WARNINGS;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\proj\cpp\StDownloader\libs\jsoncpp-0.7.0\include;D:\proj\cpp\StDownloader\public;D:\libs\boost_1_56_0;D:\proj\cpp\StDownloader\libs\avhttp-2.9.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -85,6 +85,8 @@
     <ClCompile Include="..\public\Configure.cpp" />
     <ClCompile Include="AlbumLister.cpp" />
     <ClCompile Include="AlbumListStruct.cpp" />
+    <ClCompile Include="CategoryLister.cpp" />
+    <ClCompile Include="CategoryListStruct.cpp" />
     <ClCompile Include="ILister.cpp" />
     <ClCompile Include="IListStruct.cpp" />
     <ClCompile Include="main.cpp" />
@@ -95,6 +97,8 @@
     <ClInclude Include="..\public\Configure.h" />
     <ClInclude Include="AlbumLister.h" />
     <ClInclude Include="AlbumListStruct.h" />
+    <ClInclude Include="CategoryLister.h" />
+    <ClInclude Include="CategoryListStruct.h" />
     <ClInclude Include="ILister.h" />
     <ClInclude Include="IListStruct.h" />
     <ClInclude Include="RecommendLister.h" />

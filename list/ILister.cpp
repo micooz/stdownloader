@@ -8,7 +8,8 @@
 
 namespace songtaste {
 
-    ILister::ILister() {
+    ILister::ILister()
+        :_http(_io) {
         _config = Configure::getInstance();
     }
 

@@ -15,12 +15,20 @@
 
 namespace songtaste {
 
-    class RecommendListStruct :
-        public IListStruct {
+    class RecommendListStruct : public IListStruct {
     public:
-        RecommendListStruct();
+        explicit RecommendListStruct();
         ~RecommendListStruct();
 
+        string songname;
+        string songid;
+        string uname;
+        string uid;
+        string uicon;
+        string recwidth;
+        string rateuid;
+        string ratedt;
+        string rateuname;
 
     };
 

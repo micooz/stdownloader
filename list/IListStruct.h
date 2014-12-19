@@ -21,17 +21,6 @@ namespace songtaste {
     public:
         explicit IListStruct();
         virtual ~IListStruct();
-        string songname;
-        string songid;
-        string uname;
-        string uid;
-        string uicon;
-        string recwidth;
-        string rateuid;
-        string ratedt;
-        string rateuname;
-    protected:
-
     };
     
     typedef std::shared_ptr<IListStruct> ListStruct;

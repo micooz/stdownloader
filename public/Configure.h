@@ -28,7 +28,7 @@ namespace songtaste {
 
         ~Configure();
     private:
-        Configure();
+        explicit Configure();
         Config _config;
     };
 

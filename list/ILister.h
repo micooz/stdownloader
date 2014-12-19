@@ -11,10 +11,11 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include <boost/asio/io_service.hpp>
+#include <avhttp.hpp>
 #include <string>
 #include <vector>
 #include <memory>
-#include <boost/asio/io_service.hpp>
 #include "Configure.h"
 #include "IListStruct.h"
 
@@ -26,14 +27,12 @@ namespace songtaste {
     public:
         explicit ILister();
         virtual ~ILister();
-
         virtual ListCollection getListAt(const unsigned int page = 1) = 0;
 
     protected:
         Configure *_config;
         boost::asio::io_service _io;
-    private:
-
+        avhttp::http_stream _http;
     };
 
     typedef std::shared_ptr<ILister> Lister;

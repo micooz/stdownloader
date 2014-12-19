@@ -11,9 +11,7 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include <avhttp.hpp>
 #include "ILister.h"
-#include "RecommendListStruct.h"
 
 namespace songtaste {
 
@@ -22,15 +20,11 @@ namespace songtaste {
         explicit RecommendLister();
         ~RecommendLister();
 
-        //implments
         ListCollection getListAt(const unsigned int page = 0);
-
-        //addon functions
 
     private:
         std::string _url_recommend;
         std::string _regex_pattern;
-        avhttp::http_stream _http;
     };
 
 }
