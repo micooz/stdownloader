@@ -27,13 +27,13 @@ namespace songtaste {
         explicit ILister();
         virtual ~ILister();
 
-        virtual ListCollection getList() = 0;
+        virtual ListCollection getListAt(const unsigned int page = 1) = 0;
 
     protected:
         Configure *_config;
         boost::asio::io_service _io;
     private:
-        
+
     };
 
     typedef std::shared_ptr<ILister> Lister;

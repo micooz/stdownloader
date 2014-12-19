@@ -88,6 +88,8 @@
     <ClCompile Include="ILister.cpp" />
     <ClCompile Include="IListStruct.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RecommendLister.cpp" />
+    <ClCompile Include="RecommendListStruct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\public\Configure.h" />
@@ -95,6 +97,8 @@
     <ClInclude Include="AlbumListStruct.h" />
     <ClInclude Include="ILister.h" />
     <ClInclude Include="IListStruct.h" />
+    <ClInclude Include="RecommendLister.h" />
+    <ClInclude Include="RecommendListStruct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

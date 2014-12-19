@@ -33,6 +33,12 @@
     <ClCompile Include="..\public\Configure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="RecommendLister.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RecommendListStruct.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlbumLister.h">
@@ -48,6 +54,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\public\Configure.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RecommendLister.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RecommendListStruct.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

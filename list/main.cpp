@@ -1,7 +1,6 @@
 #include <iostream>
-#include "ILister.h"
 #include "AlbumLister.h"
-#include "AlbumListStruct.h"
+#include "RecommendLister.h"
 
 using namespace std;
 using namespace songtaste;
@@ -9,8 +8,8 @@ using namespace songtaste;
 int main(int argc, char *argv[]) {
 
     try {
-        Lister lister(new AlbumLister);
-        ListCollection data = lister->getList();
+        Lister lister(new RecommendLister);
+        ListCollection data = lister->getListAt(2);
 
         ListCollection::const_iterator it = data.cbegin();
         for (; it != data.end(); ++it) {
