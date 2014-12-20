@@ -8,4 +8,9 @@ namespace songtaste {
     CategoryListStruct::~CategoryListStruct() {
     }
 
+    //CateoryListMusicStruct
+
+    CateoryListMusicStruct::CateoryListMusicStruct() {
+    }
+
 }

@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -44,7 +45,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-    } catch (const logic_error &err) {
+    } catch (const std::logic_error &err) {
         cout << err.what() << endl;
     }
 

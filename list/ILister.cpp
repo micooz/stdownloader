@@ -13,6 +13,11 @@ namespace songtaste {
         _config = Configure::getInstance();
     }
 
+    ListCollection
+        ILister::getListAt(const unsigned int page /* = 1 */) {
+        return ListCollection();
+    }
+
     ILister::~ILister() {
     }
 

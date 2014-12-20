@@ -11,7 +11,10 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include <vector>
+#include <memory>
 #include "ILister.h"
+#include "CategoryListStruct.h"
 
 namespace songtaste {
 
@@ -20,10 +23,15 @@ namespace songtaste {
         explicit CategoryLister();
         ~CategoryLister();
 
-        ListCollection getListAt(const unsigned int page = 1);
+        ListCollection getCatList();
+
+        ListCollection getListAt(const unsigned int catid, const unsigned int page = 1);
+
     private:
         string _url_category;
-        string _regex_pattern;
+        string _url_catsong;
+        string _regex_category;
+        string _regex_catsong;
     };
 
 }

@@ -27,7 +27,7 @@ namespace songtaste {
     public:
         explicit ILister();
         virtual ~ILister();
-        virtual ListCollection getListAt(const unsigned int page = 1) = 0;
+        virtual ListCollection getListAt(const unsigned int page = 1);
 
     protected:
         Configure *_config;

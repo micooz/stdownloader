@@ -3,6 +3,8 @@
 *.sdf
 *.obj
 *.o
+*.a
+*.cmake
 *.opensdf
 *.user
 
@@ -10,3 +12,5 @@
 LIB Debug/
 Debug/
 Release/
+qt-build/
+CMakeFiles/

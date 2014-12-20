@@ -28,6 +28,18 @@ namespace songtaste {
     private:
 
     };
+
+    class CateoryListMusicStruct : public IListStruct {
+    public:
+        explicit CateoryListMusicStruct();
+
+        string songid;
+        string songname;
+        string recnum;
+    private:
+
+    };
+
 }
 
 #endif // CATEGORYLISTSTRUCT_H

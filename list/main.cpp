@@ -33,14 +33,26 @@ int main(int argc, char *argv[]) {
         //    cout << endl;
         //    cout << endl;
         //}
-        Lister lister(new CategoryLister);
-        ListCollection data = lister->getListAt();
+        //Lister lister(new CategoryLister);
+
+        //CategoryLister *lister = new CategoryLister;
+
+        //ListCollection data = lister->getCatList();
+        //ListCollection::const_iterator it = data.cbegin();
+        //for (; it != data.cend(); ++it) {
+        //    CategoryListStruct *ls = static_cast<CategoryListStruct*>(it->get());
+
+        //    cout << ls->idx << "\n" << ls->catid << "\n" << ls->catname
+        //        << "\n" << ls->width << "\n" << ls->catnum << endl << endl;
+        //}
+
+        CategoryLister *lister = new CategoryLister;
+
+        ListCollection data = lister->getListAt(2, 1);
         ListCollection::const_iterator it = data.cbegin();
         for (; it != data.cend(); ++it) {
-            CategoryListStruct *ls = static_cast<CategoryListStruct*>(it->get());
-
-            cout << ls->idx << "\n" << ls->catid << "\n" << ls->catname
-                << "\n" << ls->width << "\n" << ls->catnum << endl << endl;
+            CateoryListMusicStruct *ls = static_cast<CateoryListMusicStruct*>(it->get());
+            cout << ls->songid << "\n" << ls->songname << "\n" << ls->recnum << endl << endl;
         }
 
     } catch (const logic_error &err) {
