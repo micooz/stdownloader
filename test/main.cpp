@@ -8,20 +8,22 @@ int main() {
     StyledWriter writer;
     
     Value urls;
-    urls["recommend"] = "http://www.songtaste.com/music";
-    urls["category"] = "http://www.songtaste.com/music/cat";
-    urls["catsong"] = "http://songtaste.com/music/catsong";
-    urls["album"] = "http://www.songtaste.com/music/abu";
-    urls["chart"] = "http://www.songtaste.com/music/chart";
+    urls["recommend"]   = "http://www.songtaste.com/music";
+    urls["category" ]   = "http://www.songtaste.com/music/cat";
+    urls["catsong"  ]   = "http://songtaste.com/music/catsong";
+    urls["album"    ]   = "http://www.songtaste.com/music/abu";
+    urls["chart"    ]   = "http://www.songtaste.com/music/chart";
+    urls["down"     ]   = "http://songtaste.com/playmusic.php?song_id=";
     
     Value regexs;
-    regexs["recommend"] = "MSL\\(\"(.*?)\", \"(\\d+)\", \"(.*?)\\s\", \"(\\d+)\", \"(.*?)\", \"(\\d+)\", \"(\\d+)\", \"(.*?)\", \"(.*?)\\s\"\\);";
-    regexs["categorylist"] = "WL\\(\"(\\d{0,})\",\"(\\d{0, })\", \"(.*?)\",\"(\\d+)\", \"(\\d+)\"\\);";
-    regexs["catsong"] = "song/(\\d{0,})/\">(.*?)</a>.*?\\s(\\d{0,})\\s</div>";
+    regexs["recommend"   ]  = "MSL\\(\"(.*?)\", \"(\\d+)\", \"(.*?)\\s\", \"(\\d+)\", \"(.*?)\", \"(\\d+)\", \"(\\d+)\", \"(.*?)\", \"(.*?)\\s\"\\);";
+    regexs["categorylist"]  = "WL\\(\"(\\d{0,})\",\"(\\d{0, })\", \"(.*?)\",\"(\\d+)\", \"(\\d+)\"\\);";
+    regexs["catsong"     ]  = "song/(\\d{0,})/\">(.*?)</a>.*?\\s(\\d{0,})\\s</div>";
+    regexs["down"        ]  = "WrtSongLine\\(\"(\\d+)\", \"(.*?)\", \"(.*?)\\s\", \"(\\d{0,})\", \"(\\d{0,})\", \"(.*?)\", \"(.*?)\"\\);";
     
     Value root;
-    root["URLS"] = urls;
-    root["REGEXS"] = regexs;
+    root["URLS"     ]  = urls;
+    root["REGEXS"   ]  = regexs;
     //
     std::string json;
     json.reserve(200);

@@ -12,10 +12,12 @@
 #folders
 LIB Debug/
 Debug/
+CMakeFiles/
 
-jsoncpp-0.7.0-build/
+songtaste-build/
 list-build/
 test-build/
-songtaste-build/
+down-build/
+CppRegexTester-build/
 
-CMakeFiles/
+jsoncpp-0.7.0-build/
