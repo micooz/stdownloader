@@ -1,0 +1,14 @@
+{
+   "REGEXS" : {
+      "categorylist" : "WL\\(\"(\\d{0,})\",\"(\\d{0, })\", \"(.*?)\",\"(\\d+)\", \"(\\d+)\"\\);",
+      "catsong" : "song/(\\d{0,})/\">(.*?)</a>.*?\\s(\\d{0,})\\s</div>",
+      "recommend" : "MSL\\(\"(.*?)\", \"(\\d+)\", \"(.*?)\\s\", \"(\\d+)\", \"(.*?)\", \"(\\d+)\", \"(\\d+)\", \"(.*?)\", \"(.*?)\\s\"\\);"
+   },
+   "URLS" : {
+      "album" : "http://www.songtaste.com/music/abu",
+      "category" : "http://www.songtaste.com/music/cat",
+      "catsong" : "http://songtaste.com/music/catsong",
+      "chart" : "http://www.songtaste.com/music/chart",
+      "recommend" : "http://www.songtaste.com/music"
+   }
+}

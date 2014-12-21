@@ -14,32 +14,21 @@
 #include "IListStruct.h"
 
 namespace songtaste {
-
+    
     class CategoryListStruct : public IListStruct {
     public:
         explicit CategoryListStruct();
         ~CategoryListStruct();
-
+        
         string idx;
         string catid;
         string catname;
         string width;
         string catnum;
     private:
-
+        
     };
-
-    class CateoryListMusicStruct : public IListStruct {
-    public:
-        explicit CateoryListMusicStruct();
-
-        string songid;
-        string songname;
-        string recnum;
-    private:
-
-    };
-
+    
 }
 
 #endif // CATEGORYLISTSTRUCT_H

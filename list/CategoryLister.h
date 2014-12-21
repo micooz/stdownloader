@@ -15,24 +15,25 @@
 #include <memory>
 #include "ILister.h"
 #include "CategoryListStruct.h"
+#include "CategoryListMusicStruct.h"
 
 namespace songtaste {
-
+    
     class CategoryLister : public ILister {
     public:
         explicit CategoryLister();
         ~CategoryLister();
-
+        
         ListCollection getCatList();
-
+        
         ListCollection getListAt(const unsigned int catid, const unsigned int page = 1);
-
+        
     private:
         string _url_category;
         string _url_catsong;
         string _regex_category;
         string _regex_catsong;
     };
-
+    
 }
 #endif // CATEGORYLISTER_H

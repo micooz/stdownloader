@@ -7,10 +7,15 @@
 *.cmake
 *.opensdf
 *.user
+*.3-pre1
 
 #folders
 LIB Debug/
 Debug/
-Release/
-qt-build/
+
+jsoncpp-0.7.0-build/
+list-build/
+test-build/
+songtaste-build/
+
 CMakeFiles/

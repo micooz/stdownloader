@@ -20,7 +20,7 @@ namespace songtaste {
         explicit RecommendLister();
         ~RecommendLister();
 
-        ListCollection getListAt(const unsigned int page = 0);
+        ListCollection getListAt(const unsigned int page = 1);
 
     private:
         std::string _url_recommend;

@@ -12,9 +12,10 @@ INCLUDEPATH += ../libs/jsoncpp-0.7.0/include/
 LIBS += -L D:/libs/boost_1_56_0/stage/lib/ \
         -lboost_system-mgw48-mt-s-1_56 \
         -lboost_regex-mgw48-mt-s-1_56 \
-        -lboost_filesystem-mgw48-mt-s-1_56
+        -lboost_filesystem-mgw48-mt-s-1_56 \
+        -lboost_program_options-mgw48-mt-s-1_56
 
-LIBS += "../libs/jsoncpp-0.7.0/lib/libjsoncpp.a"
+LIBS += "../jsoncpp-0.7.0-build/lib/libjsoncpp.a"
 
 win32{
     DEFINES += WIN32
@@ -31,7 +32,8 @@ SOURCES += \
     main.cpp \
     RecommendLister.cpp \
     RecommendListStruct.cpp \
-    ../public/Configure.cpp
+    ../public/Configure.cpp \
+    CategoryListMusicStruct.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -45,5 +47,6 @@ HEADERS += \
     IListStruct.h \
     RecommendLister.h \
     RecommendListStruct.h \
-    ../public/Configure.h
+    ../public/Configure.h \
+    CategoryListMusicStruct.h
 

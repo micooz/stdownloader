@@ -8,7 +8,7 @@ SOURCES += main.cpp
 
 INCLUDEPATH += ../libs/jsoncpp-0.7.0/include/
 
-LIBS += -L ../libs/jsoncpp-0.7.0/lib/
+LIBS += -L ../jsoncpp-0.7.0-build/lib
 LIBS += -ljsoncpp
 
 include(deployment.pri)
