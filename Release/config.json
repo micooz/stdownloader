@@ -11,6 +11,7 @@
       "catsong" : "http://songtaste.com/music/catsong",
       "chart" : "http://www.songtaste.com/music/chart",
       "down" : "http://songtaste.com/playmusic.php?song_id=",
-      "recommend" : "http://www.songtaste.com/music"
+      "recommend" : "http://www.songtaste.com/music",
+      "time" : "http://songtaste.com/time.php"
    }
 }

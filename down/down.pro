@@ -25,7 +25,8 @@ win32{
 SOURCES += main.cpp \
     ../public/Configure.cpp \
     Downloader.cpp \
-    MusicInfo.cpp
+    MusicInfo.cpp \
+    Sampler.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -33,5 +34,7 @@ qtcAddDeployment()
 HEADERS += \
     ../public/Configure.h \
     Downloader.h \
-    MusicInfo.h
+    MusicInfo.h \
+    Console.hpp \
+    Sampler.h
 

@@ -14,6 +14,7 @@ int main() {
     urls["album"    ]   = "http://www.songtaste.com/music/abu";
     urls["chart"    ]   = "http://www.songtaste.com/music/chart";
     urls["down"     ]   = "http://songtaste.com/playmusic.php?song_id=";
+    urls["time"     ]   = "http://songtaste.com/time.php";
     
     Value regexs;
     regexs["recommend"   ]  = "MSL\\(\"(.*?)\", \"(\\d+)\", \"(.*?)\\s\", \"(\\d+)\", \"(.*?)\", \"(\\d+)\", \"(\\d+)\", \"(.*?)\", \"(.*?)\\s\"\\);";
