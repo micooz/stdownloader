@@ -6,7 +6,7 @@
 using namespace std;
 
 vector<string> sub_routines = {
-    "list", "fetch"
+    "list", "down"
 };
 
 const string help = "require list options\n";

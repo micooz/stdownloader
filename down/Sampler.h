@@ -1,9 +1,6 @@
 #ifndef SAMPLER_H
 #define SAMPLER_H
 
-#include <map>
-#include <string>
-
 namespace songtaste{
     
     class Sampler {
@@ -14,7 +11,6 @@ namespace songtaste{
         void sampling(unsigned long interval, unsigned long current, unsigned long total);
     private:
         Sampler();
-        std::map<unsigned short, std::string> _buffer;
     };
     
 }

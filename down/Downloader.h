@@ -18,29 +18,24 @@ namespace songtaste{
     
     class Downloader {
     public:
-        explicit Downloader(boost::asio::io_service &io);
+        explicit Downloader();
         ~Downloader();
         
-        void download(unsigned int songid, const string &path);
+        void download(unsigned int songid, const string &dir, const string &name);
         
         MInfo getMusicInfo(unsigned int songid);
     protected:
+        void download(unsigned int songid, const MInfo info);
+        
         std::string map_to_query(const KeyValues& key_values);
         
         avhttp::request_opts post_form(http_stream& stream, const KeyValues& key_values);
-        
-//        void handle_open(const boost::system::error_code &ec);
-        
-//        void handle_read(int bytes_transferred, const boost::system::error_code &ec);
-        
     private:
+        boost::asio::io_service io;
+        avhttp::http_stream _http;
         string _url_down;
         string _url_time;
         string _regex_down;
-        
-        avhttp::http_stream _http;
-        std::array<char,1024> _buffer;
-        std::ofstream _fout;
     };
     
 }

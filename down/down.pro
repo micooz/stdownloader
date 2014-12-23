@@ -35,6 +35,5 @@ HEADERS += \
     ../public/Configure.h \
     Downloader.h \
     MusicInfo.h \
-    Console.hpp \
     Sampler.h
 

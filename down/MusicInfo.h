@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 
+
 namespace songtaste {
     
     typedef std::string string;
@@ -12,6 +13,8 @@ namespace songtaste {
     public:
         explicit MusicInfo();
         ~MusicInfo();
+        
+        std::string toJson();
         
         string songid;
         string songname;

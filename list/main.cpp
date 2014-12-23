@@ -43,8 +43,8 @@ int main(int argc, char *argv[]) {
     try {
         
         do{
-            if(vm.count("help") || vm.size() == 0){
-                cout<< desc <<endl;
+            if(vm.count("help") || argc == 1){
+                cout<< desc;
                 break;
             }
             
