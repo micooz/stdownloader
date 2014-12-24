@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
             }
         }
         
-    } catch (const std::logic_error &err) {
+    } catch (const std::exception &err) {
         cout << err.what() << endl;
     }
     

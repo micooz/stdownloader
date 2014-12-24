@@ -18,6 +18,7 @@ songtaste-build/
 list-build/
 test-build/
 down-build/
+parse-build/
 CppRegexTester-build/
 
 jsoncpp-0.7.0-build/
