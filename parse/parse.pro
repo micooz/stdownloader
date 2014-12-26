@@ -5,6 +5,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 INCLUDEPATH += D:/libs/boost_1_56_0/
+INCLUDEPATH += ../public/
 INCLUDEPATH += ../libs/jsoncpp-0.7.0/include/
 
 LIBS += -L D:/libs/boost_1_56_0/stage/lib/ \
@@ -14,8 +15,12 @@ LIBS += -L D:/libs/boost_1_56_0/stage/lib/ \
 
 LIBS += "../jsoncpp-0.7.0-build/lib/libjsoncpp.a"
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    ../public/Configure.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
+
+HEADERS += \
+    ../public/Configure.h
 

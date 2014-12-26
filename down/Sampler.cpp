@@ -17,12 +17,6 @@ namespace songtaste{
         return &ins;
     }
     
-    /**
-     * @brief Sampler::sampling
-     * @param interval ms
-     * @param current
-     * @param total
-     */
     void Sampler::sampling(unsigned long interval, unsigned long current, unsigned long total) {
         static boost::timer t_interval;
         static Json::Value json;

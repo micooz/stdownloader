@@ -6,8 +6,8 @@
 namespace songtaste {
     
     RecommendLister::RecommendLister() {
-        _url_recommend = _config->all()["URLS"]["recommend"].asString();
-        _regex_pattern = _config->all()["REGEXS"]["recommend"].asString();
+        _url_recommend = _config->all()["urls"]["recommend"].asString();
+        _regex_pattern = _config->all()["regexs"]["recommend"].asString();
         if (_url_recommend.empty() || _regex_pattern.empty()) {
             throw error("configure item is empty");
         }

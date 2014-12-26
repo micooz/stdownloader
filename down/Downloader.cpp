@@ -10,12 +10,12 @@ namespace songtaste {
     Downloader::Downloader()
         :_http(io){
         Config config   = Configure::getInstance()->all();
-        _url_down       = config["URLS"]["down"].asString();
-        _url_time       = config["URLS"]["time"].asString();
-        _regex_down     = config["REGEXS"]["down"].asString();
+        _url_down       = config["urls"]["down"].asString();
+        _url_time       = config["urls"]["time"].asString();
+        _regex_down     = config["regexs"]["down"].asString();
         
         if(_url_down.empty() || _regex_down.empty()){
-            throw error("URLS->down cannot be empty");
+            throw error("config error");
         }
     }
     

@@ -22,9 +22,14 @@ int main() {
     regexs["catsong"     ]  = "song/(\\d{0,})/\">(.*?)</a>.*?\\s(\\d{0,})\\s</div>";
     regexs["down"        ]  = "WrtSongLine\\(\"(\\d+)\", \"(.*?)\", \"(.*?)\\s\", \"(\\d{0,})\", \"(\\d{0,})\", \"(.*?)\", \"(.*?)\"\\);";
     
+    Value parse;
+    parse["first"]  = "([a-z]+)\\s+:\\s(.*?)\\n";
+    parse["second"] = "Duration:\\s(.*?),\\sstart:\\s(.*?),\\sbitrate:\\s(.*?)\\n.+?Audio:\\s(.*?)\\n";
+    
     Value root;
-    root["URLS"     ]  = urls;
-    root["REGEXS"   ]  = regexs;
+    root["urls"     ]  = urls;
+    root["regexs"   ]  = regexs;
+    root["parse"    ]  = parse;
     //
     std::string json;
     json.reserve(200);

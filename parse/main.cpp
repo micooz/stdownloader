@@ -7,18 +7,26 @@
 #include <string>
 #include <cstring>
 #include <map>
-
+#include "Configure.h"
 using namespace std;
 
-const string help = "Usage:\nparse audio";
+const string help = "Usage: parse audio-file";
 
-typedef map<string,string> metaData;
-typedef shared_ptr<metaData> MetaData;
+typedef map<string,string>      metaData;
+typedef shared_ptr<metaData>    MetaData;
 
 static MetaData parse(const char *buf) {
+    auto *config = songtaste::Configure::getInstance();
+    string pattern_1 = config->all()["parse"]["first"].asString();
+    string pattern_2 = config->all()["parse"]["second"].asString();
+    
+    if(config->all().empty()){
+        throw logic_error("config error");
+    }
+    
     string org(buf);
     metaData *pdata = new metaData;
-    boost::regex pattern("([a-z]+)\\s+:\\s(.*?)\\n");
+    boost::regex pattern(pattern_1);
     boost::smatch matches;
     
     std::string::const_iterator s = org.begin();
@@ -29,16 +37,16 @@ static MetaData parse(const char *buf) {
         s = matches[2].second;
     }
     
-    pattern.assign("Duration:\\s(.*?),\\sstart:\\s(.*?),\\sbitrate:\\s(.*?)\\n.+?Audio:\\s(.*?)\\n");
+    pattern.assign(pattern_2);
     
     s = org.begin();
     e = org.end();
     
     while (boost::regex_search(s, e, matches, pattern)) {
-        (*pdata)["duration"] = matches.str(1);
-        (*pdata)["start"] = matches.str(2);
-        (*pdata)["bitrate"] = matches.str(3);
-        (*pdata)["audio"] = matches.str(4);
+        (*pdata)["duration"]  = matches.str(1);
+        (*pdata)["start"   ]  = matches.str(2);
+        (*pdata)["bitrate" ]  = matches.str(3);
+        (*pdata)["audio"   ]  = matches.str(4);
         s = matches[4].second;
     }
     
@@ -48,7 +56,7 @@ static MetaData parse(const char *buf) {
 int main(int argc, char *argv[]) {
     try {
         if (argc != 2) {
-            cout << help << endl;
+            cout << help;
             exit(0);
         }
         
@@ -77,11 +85,11 @@ int main(int argc, char *argv[]) {
 #elif defined (linux)||defined (__linux__)
         pclose(pf);
 #endif 
-        pf = nullptr;       
+        pf = nullptr;
         
         MetaData dataset = parse(buffer);
         Json::Value json;
-        for(metaData::const_iterator it = dataset->cbegin();
+        for(auto it = dataset->cbegin();
             it != dataset->cend(); ++it){
             json[(*it).first] = (*it).second;
         }

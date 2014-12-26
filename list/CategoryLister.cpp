@@ -4,10 +4,10 @@
 namespace songtaste {
     
     CategoryLister::CategoryLister() {
-        _url_category = _config->all()["URLS"]["category"].asString();
-        _url_catsong = _config->all()["URLS"]["catsong"].asString();
-        _regex_category = _config->all()["REGEXS"]["categorylist"].asString();
-        _regex_catsong = _config->all()["REGEXS"]["catsong"].asString();
+        _url_category = _config->all()["urls"]["category"].asString();
+        _url_catsong = _config->all()["urls"]["catsong"].asString();
+        _regex_category = _config->all()["regexs"]["categorylist"].asString();
+        _regex_catsong = _config->all()["regexs"]["catsong"].asString();
         
         if (_url_category.empty() || _regex_category.empty() || _regex_catsong.empty() || _url_catsong.empty()) {
             throw error("configure item is empty");

@@ -1,11 +1,15 @@
 {
-   "REGEXS" : {
+   "parse" : {
+      "first" : "([a-z]+)\\s+:\\s(.*?)\\n",
+      "second" : "Duration:\\s(.*?),\\sstart:\\s(.*?),\\sbitrate:\\s(.*?)\\n.+?Audio:\\s(.*?)\\n"
+   },
+   "regexs" : {
       "categorylist" : "WL\\(\"(\\d{0,})\",\"(\\d{0, })\", \"(.*?)\",\"(\\d+)\", \"(\\d+)\"\\);",
       "catsong" : "song/(\\d{0,})/\">(.*?)</a>.*?\\s(\\d{0,})\\s</div>",
       "down" : "WrtSongLine\\(\"(\\d+)\", \"(.*?)\", \"(.*?)\\s\", \"(\\d{0,})\", \"(\\d{0,})\", \"(.*?)\", \"(.*?)\"\\);",
       "recommend" : "MSL\\(\"(.*?)\", \"(\\d+)\", \"(.*?)\\s\", \"(\\d+)\", \"(.*?)\", \"(\\d+)\", \"(\\d+)\", \"(.*?)\", \"(.*?)\\s\"\\);"
    },
-   "URLS" : {
+   "urls" : {
       "album" : "http://www.songtaste.com/music/abu",
       "category" : "http://www.songtaste.com/music/cat",
       "catsong" : "http://songtaste.com/music/catsong",

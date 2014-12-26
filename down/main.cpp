@@ -29,7 +29,7 @@ int main(int argc,char *argv[]) {
     try {
         do {
             if(vm.count("help") || argc == 1){
-                cout<< desc << endl;
+                cout<< desc;
                 break;
             }
             
