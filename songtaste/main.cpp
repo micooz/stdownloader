@@ -6,18 +6,17 @@
 using namespace std;
 
 vector<string> sub_routines = {
-    "list", "down"
+    "list", "down", "parse"
 };
-
-const string help = "require list options\n";
 
 int main(int argc, char *argv[]) {
     try {
         if (argc < 2) {
-            cout << help << endl;
+            cout << "invalid sub routines.";
             exit(0);
         }
         
+        bool found = false;
         for (auto sub : sub_routines) {
             if (sub == argv[1]) {
                 string str_argv;
@@ -40,13 +39,14 @@ int main(int argc, char *argv[]) {
                 pclose(pf);
 #endif
                 pf = nullptr;
-                
+                found = true;
                 break;
             }
         }
+        if(!found) cout << "invalid operation.";
         
     } catch (const std::exception &err) {
-        cout << err.what() << endl;
+        cout << err.what();
     }
     
     return 0;

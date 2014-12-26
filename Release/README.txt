@@ -23,3 +23,9 @@ $ songtaste down --id 3468640 --info
 $ songtaste down --id 3468640 --dir ./
 
 $ songtaste down --id 3468640 --dir ./music --name my_music
+
+----------------------------------------------
+
+$ songtaste parse
+
+$ songtaste parse test.mp3
