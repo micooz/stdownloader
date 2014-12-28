@@ -20,13 +20,14 @@ namespace songtaste {
         explicit CategoryListStruct();
         ~CategoryListStruct();
         
-        string idx;
-        string catid;
-        string catname;
-        string width;
-        string catnum;
-    private:
+        const Json::Value toJson(void);
         
+    public:
+        std::string idx;
+        std::string catid;
+        std::string catname;
+        std::string width;
+        std::string catnum;
     };
     
 }

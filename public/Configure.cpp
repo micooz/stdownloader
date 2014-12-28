@@ -2,33 +2,36 @@
 #include "Configure.h"
 
 namespace songtaste {
-
+    
+    
+    
+    
+    
     Configure::Configure() {
-        std::string config_path = "config.json";
-        std::ifstream fs(config_path);
-
+        std::ifstream fs(CONFIG_FILE);
+        
         if (!fs.good()) {
             throw error("cannot open config.json");
         }
-
+        
         Json::Reader reader;
         if (!reader.parse(fs, _config, false)) {
             throw error("loading configure file error");
         }
         fs.close();
     }
-
+    
     Configure*
-        Configure::getInstance() {
+    Configure::getInstance() {
         static Configure instance;
         return &instance;
     }
-
+    
     const Config&
-        Configure::all() const {
+    Configure::all() const {
         return _config;
     }
-
+    
     Configure::~Configure() {
     }
 }

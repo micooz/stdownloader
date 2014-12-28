@@ -11,19 +11,26 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include <memory>
+#define SAFERELEASE(p) if(p) {delete p; p = nullptr;}
+
 #include <string>
 
-namespace songtaste {
-    typedef std::string string;
+namespace Json {
+    class Value;
+}
 
+namespace songtaste {
+    class Json::Value;
+    
     class IListStruct {
     public:
         explicit IListStruct();
+        
         virtual ~IListStruct();
+        
+        virtual const Json::Value toJson(void) = 0;
     };
     
-    typedef std::shared_ptr<IListStruct> ListStruct;
 }
 
 #endif // ILISTSTRUCT_H

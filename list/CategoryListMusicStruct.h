@@ -14,13 +14,15 @@ namespace songtaste {
     class CategoryListMusicStruct : public IListStruct {
     public:
         explicit CategoryListMusicStruct();
+        
         ~CategoryListMusicStruct();
         
-        string songid;
-        string songname;
-        string recnum;
-    private:
+        const Json::Value toJson(void);
         
+    public:
+        std::string songid;
+        std::string songname;
+        std::string recnum;
     };  
 }
 

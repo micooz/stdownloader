@@ -21,7 +21,7 @@ namespace songtaste {
         ~AlbumLister();
 
         //implments virtual functions
-        ListCollection getListAt(const unsigned int page);
+        std::vector<IListStruct*>* getListAt(const unsigned int page);
 
         //addon functions
 

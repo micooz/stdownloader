@@ -15,23 +15,21 @@
 #include <boost/noncopyable.hpp>
 
 namespace songtaste {
-    using namespace Json;
-
-    typedef Json::Value Config;
-    typedef std::logic_error error;
-
+    typedef Json::Value         Config;
+    typedef std::logic_error    error;
+    
     class Configure : public boost::noncopyable {
     public:
         static Configure* getInstance();
-
+        
         const Config& all() const;
-
+        
         ~Configure();
     private:
         explicit Configure();
         Config _config;
+        const std::string CONFIG_FILE = "config.json";
     };
-
 }
 
 #endif // Configure.h

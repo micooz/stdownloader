@@ -11,28 +11,33 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include <vector>
-#include <memory>
+#include <boost/asio.hpp>
+#include <avhttp.hpp>
 #include "ILister.h"
-#include "CategoryListStruct.h"
-#include "CategoryListMusicStruct.h"
 
 namespace songtaste {
+    class ListCollection;
     
     class CategoryLister : public ILister {
     public:
         explicit CategoryLister();
         ~CategoryLister();
         
-        ListCollection getCatList();
+        ListCollection *getListAt(const unsigned int);
         
-        ListCollection getListAt(const unsigned int catid, const unsigned int page = 1);
+        ListCollection *getMusicByCatid(const unsigned int catid, unsigned int page = 1);
         
     private:
-        string _url_category;
-        string _url_catsong;
-        string _regex_category;
-        string _regex_catsong;
+        std::string _url_category;
+        std::string _url_catsong;
+        std::string _regex_category;
+        std::string _regex_catsong;
+        
+        boost::asio::io_service _io;
+        avhttp::http_stream _http;
+        
+        ListCollection *_catlist;
+        ListCollection *_musiclist;
     };
     
 }

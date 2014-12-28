@@ -1,17 +1,18 @@
 #include "AlbumLister.h"
+#include "AlbumListStruct.h"
 
 namespace songtaste {
-
+    
     AlbumLister::AlbumLister() {
     }
-
-    ListCollection
-        AlbumLister::getListAt(const unsigned int page) {
-
-        return ListCollection();
+    
+    std::vector<IListStruct*>*
+    AlbumLister::getListAt(const unsigned int page) {
+        
+        return new std::vector<IListStruct*>();
     }
-
+    
     AlbumLister::~AlbumLister() {
     }
-
+    
 }

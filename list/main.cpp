@@ -8,10 +8,8 @@
 #include <boost/program_options.hpp>
 #include <iostream>
 #include "RecommendLister.h"
-#include "RecommendListStruct.h"
 #include "CategoryLister.h"
-#include "CategoryListStruct.h"
-#include "CategoryListMusicStruct.h"
+#include "ListCollection.h"
 
 using namespace std;
 using namespace boost::program_options;
@@ -24,12 +22,12 @@ int main(int argc, char *argv[]) {
     
     options_description desc("Usage");
     desc.add_options()
-            ("help,h","show help information")
-            ("recommend","get recommend list")
-            ("category","get category list")
-            ("catsong","get song list from a category,require --catid")
-            ("catid",value<unsigned int>(),"category id")
-            ("page",value<unsigned int>(),"page number");
+            ("help,h",      "show help information")
+            ("recommend",   "get recommend list")
+            ("category",    "get category list")
+            ("catsong",     "get song list from a category, require --catid")
+            ("catid",       value<unsigned int>(),"category id")
+            ("page",        value<unsigned int>(),"page number, default to 1");
     
     variables_map vm;
     try{
@@ -49,81 +47,25 @@ int main(int argc, char *argv[]) {
             }
             
             if(vm.count("recommend")){
-                unsigned int page = vm.count("page")?vm["page"].as<unsigned int>():0;
-                
-                shared_ptr<RecommendLister> lister(new RecommendLister);
-                
-                Json::Value root;
-                ListCollection data = lister->getListAt(page);
-                ListCollection::const_iterator it = data.cbegin();
-                for (; it != data.cend(); ++it) {
-                    RecommendListStruct *ls = static_cast<RecommendListStruct*>(it->get());
-                    
-                    Json::Value item;
-                    item["songname"]    = ls->songname;
-                    item["songid"]      = ls->songid;
-                    item["uname"]       = ls->uname;
-                    item["uid"]         = ls->uid;
-                    item["uicon"]       = ls->uicon;
-                    item["recwidth"]    = ls->recwidth;
-                    item["rateuid"]     = ls->rateuid;
-                    item["ratedt"]      = ls->ratedt;
-                    item["rateuname"]   = ls->rateuname;
-                    
-                    root.append(item);
-                }
-                Json::FastWriter writer;
-                cout<< writer.write(root);
-                
+                unsigned int page = vm.count("page")?vm["page"].as<unsigned int>():1;
+                ILister *pLister  = new RecommendLister;
+                cout << pLister->getListAt(page)->toJsonString();
+                SAFERELEASE(pLister);
                 break;
             }
             
             if(vm.count("category")){
-                shared_ptr<CategoryLister> lister(new CategoryLister);
-                ListCollection data = lister->getCatList();
-                
-                Json::Value root;
-                ListCollection::const_iterator it = data.cbegin();
-                for (; it != data.cend(); ++it) {
-                    CategoryListStruct *ls = static_cast<CategoryListStruct*>(it->get());
-                    
-                    Json::Value item;
-                    item["catid"]       = ls->catid;
-                    item["catname"]     = ls->catname;
-                    item["catnum"]      = ls->catnum;
-                    item["idx"]         = ls->idx;
-                    item["width"]       = ls->width;
-                    
-                    root.append(item);
-                }
-                Json::FastWriter writer;
-                cout<< writer.write(root);
-                
+                ILister *lister = new CategoryLister;
+                cout << lister->getListAt()->toJsonString();
+                SAFERELEASE(lister);
                 break;
-            }            
+            }
             
             if(vm.count("catsong") && vm.count("catid")){
                 unsigned int catid = vm["catid"].as<unsigned int>();
-                unsigned int page = vm.count("page")?vm["page"].as<unsigned int>():0;
-                
-                shared_ptr<CategoryLister> lister(new CategoryLister);
-                ListCollection data = lister->getListAt(catid,page);
-                
-                Json::Value root;
-                ListCollection::const_iterator it = data.cbegin();
-                for (; it != data.cend(); ++it) {
-                    CategoryListMusicStruct *ls = static_cast<CategoryListMusicStruct*>(it->get());
-                    
-                    Json::Value item;
-                    item["songid"]       = ls->songid;
-                    item["songname"]     = ls->songname;
-                    item["recnum"]       = ls->recnum;
-                    
-                    root.append(item);
-                }
-                Json::FastWriter writer;
-                cout<< writer.write(root);
-                
+                unsigned int page  = vm.count("page")?vm["page"].as<unsigned int>():1;
+                CategoryLister *lister = new CategoryLister;
+                cout << lister->getMusicByCatid(catid, page)->toJsonString();
                 break;
             }
             

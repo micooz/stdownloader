@@ -7,18 +7,12 @@
 #include "ILister.h"
 
 namespace songtaste {
-
-    ILister::ILister()
-        :_http(_io) {
-        _config = Configure::getInstance();
+    
+    ILister::ILister() {
+        
     }
-
-    ListCollection
-        ILister::getListAt(const unsigned int page /* = 1 */) {
-        return ListCollection();
-    }
-
+    
     ILister::~ILister() {
     }
-
+    
 }

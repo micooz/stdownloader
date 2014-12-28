@@ -1,19 +1,25 @@
 #include <boost/regex.hpp>
 #include <sstream>
+#include "ListCollection.h"
 #include "RecommendLister.h"
 #include "RecommendListStruct.h"
+#include "Configure.h"
 
 namespace songtaste {
     
-    RecommendLister::RecommendLister() {
-        _url_recommend = _config->all()["urls"]["recommend"].asString();
-        _regex_pattern = _config->all()["regexs"]["recommend"].asString();
+    using namespace std;
+    
+    RecommendLister::RecommendLister():
+        _list(nullptr), _http(_io){
+        _url_recommend = Configure::getInstance()->all()["urls"]["recommend"].asString();
+        _regex_pattern = Configure::getInstance()->all()["regexs"]["recommend"].asString();
         if (_url_recommend.empty() || _regex_pattern.empty()) {
             throw error("configure item is empty");
         }
+        _list = new ListCollection;
     }
     
-    ListCollection
+    ListCollection*
     RecommendLister::getListAt(const unsigned int page /* = 1 */) {
         if (page < 1 || page > 10) {
             throw error("page error");
@@ -36,36 +42,37 @@ namespace songtaste {
         std::string::const_iterator s = html.begin();
         std::string::const_iterator e = html.end();
         
-        ListCollection _result;
-        
         while (boost::regex_search(s, e, matches, pattern)) {
             RecommendListStruct *rls = new RecommendListStruct;
+            rls->songname   = matches.str(1);
+            rls->songid     = matches.str(2);
+            rls->uname      = matches.str(3);
+            rls->uid        = matches.str(4);
+            rls->uicon      = matches.str(5);
+            rls->recwidth   = matches.str(6);
+            rls->rateuid    = matches.str(7);
+            rls->ratedt     = matches.str(8);
+            rls->rateuname  = matches.str(9);
             
-            //matches.str(0) is the original string
-            rls->songname = matches.str(1);
-            rls->songid = matches.str(2);
-            rls->uname = matches.str(3);
-            rls->uid = matches.str(4);
-            rls->uicon = matches.str(5);
-            rls->recwidth = matches.str(6);
-            rls->rateuid = matches.str(7);
-            rls->ratedt = matches.str(8);
-            rls->rateuname = matches.str(9);
-            
-            ListStruct item(rls);
-            _result.push_back(item);
-            
+            //add to container
+            _list->add(rls);
             //iterate next matching
             s = matches[9].second;
         }
         
-        return _result;
+        return _list;
     }
     
     RecommendLister::~RecommendLister() {
         if (_http.is_open()) {
             _http.close();
         }
+        
+        if(_list){
+            delete _list;
+            _list = nullptr;
+        }
+        
     }
     
 }

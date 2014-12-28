@@ -11,27 +11,30 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include <string>
 #include "IListStruct.h"
 
 namespace songtaste {
-
+    
     class RecommendListStruct : public IListStruct {
     public:
         explicit RecommendListStruct();
         ~RecommendListStruct();
-
-        string songname;
-        string songid;
-        string uname;
-        string uid;
-        string uicon;
-        string recwidth;
-        string rateuid;
-        string ratedt;
-        string rateuname;
-
+        
+        const Json::Value toJson(void);
+        
+    public:
+        std::string songname;
+        std::string songid;
+        std::string uname;
+        std::string uid;
+        std::string uicon;
+        std::string recwidth;
+        std::string rateuid;
+        std::string ratedt;
+        std::string rateuname;
     };
-
+    
 }
 
 #endif // RECOMMENDLISTSTRUCT_H
