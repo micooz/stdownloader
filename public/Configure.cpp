@@ -1,5 +1,6 @@
 #include <fstream>
 #include "Configure.h"
+#include "Resource.h"
 
 namespace songtaste
 {
@@ -9,12 +10,12 @@ namespace songtaste
         std::ifstream fs(CONFIG_FILE);
 
         if (!fs.good()) {
-            throw error("cannot open config.json");
+            throw std::logic_error("cannot open config.json");
         }
 
         Json::Reader reader;
         if (!reader.parse(fs, _config, false)) {
-            throw error("loading configure file error");
+            throw std::logic_error("loading configure file error");
         }
         fs.close();
     }
@@ -26,14 +27,13 @@ namespace songtaste
         return &instance;
     }
 
-    const Config &
-    Configure::all() const
+    Json::Value &Configure::operator[](const std::string &key)
     {
-        return _config;
+        return _config[key];
     }
 
     Configure::~Configure()
     {
     }
-    
+
 }

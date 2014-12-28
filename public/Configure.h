@@ -16,22 +16,22 @@
 
 namespace songtaste
 {
-    typedef Json::Value         Config;
-    typedef std::logic_error    error;
 
     class Configure : public boost::noncopyable
     {
-        public:
-            static Configure *getInstance();
+    public:
+        static Configure *getInstance();
 
-            const Config &all() const;
+        Json::Value &operator[](const std::string &key);
 
-            ~Configure();
-        private:
-            explicit Configure();
-            Config _config;
-            const std::string CONFIG_FILE = "config.json";
+        ~Configure();
+    private:
+        explicit Configure();
+
+        const std::string CONFIG_FILE = "config.json";
+        Json::Value _config;
     };
+    
 }
 
 #endif // Configure.h

@@ -5,6 +5,7 @@
 #include "CategoryLister.h"
 #include "CategoryListStruct.h"
 #include "CategoryListMusicStruct.h"
+#include "Resource.h"
 
 namespace songtaste
 {
@@ -12,13 +13,15 @@ namespace songtaste
     CategoryLister::CategoryLister():
         _catlist(nullptr), _musiclist(nullptr), _http(_io)
     {
-        _url_category = Configure::getInstance()->all()["urls"]["category"].asString();
-        _url_catsong = Configure::getInstance()->all()["urls"]["catsong"].asString();
-        _regex_category = Configure::getInstance()->all()["regexs"]["categorylist"].asString();
-        _regex_catsong = Configure::getInstance()->all()["regexs"]["catsong"].asString();
+        Configure &config = *(Configure::getInstance());
+
+        _url_category   = config[constant::config::urls][constant::config::category].asString();
+        _url_catsong    = config[constant::config::urls][constant::config::catsong].asString();
+        _regex_category = config[constant::config::regexs][constant::config::categorylist].asString();
+        _regex_catsong  = config[constant::config::regexs][constant::config::catsong].asString();
 
         if (_url_category.empty() || _regex_category.empty() || _regex_catsong.empty() || _url_catsong.empty()) {
-            throw error("configure item is empty");
+            throw std::logic_error(constant::error::configure_error);
         }
 
         _catlist   = new ListCollection;
@@ -38,7 +41,7 @@ namespace songtaste
         //open connection
         _http.open(_url_category, ec);
         if (ec) {
-            throw error(ec.message());
+            throw std::logic_error(ec.message());
         }
         std::stringstream ss;
         ss << &_http;
@@ -77,7 +80,7 @@ namespace songtaste
         //open connection
         _http.open(url, ec);
         if (ec) {
-            throw error(ec.message());
+            throw std::logic_error(ec.message());
         }
         std::stringstream ss;
         ss << &_http;
