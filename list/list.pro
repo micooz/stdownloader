@@ -23,30 +23,29 @@ win32{
 }
 
 SOURCES += \
-    AlbumLister.cpp \
-    AlbumListStruct.cpp \
-    CategoryLister.cpp \
-    CategoryListStruct.cpp \
     ILister.cpp \
     IListStruct.cpp \
     main.cpp \
     RecommendLister.cpp \
     RecommendListStruct.cpp \
     ../public/Configure.cpp \
+    ListCollection.cpp \
+    CategoryLister.cpp \
+    CategoryListStruct.cpp \
     CategoryListMusicStruct.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
 
 HEADERS += \
-    AlbumLister.h \
-    AlbumListStruct.h \
-    CategoryLister.h \
-    CategoryListStruct.h \
     ILister.h \
     IListStruct.h \
     RecommendLister.h \
     RecommendListStruct.h \
     ../public/Configure.h \
+    ../public/Resource.h \
+    ListCollection.h \
+    CategoryLister.h \
+    CategoryListStruct.h \
     CategoryListMusicStruct.h
 
