@@ -13,15 +13,17 @@
 
 #include "IListStruct.h"
 
-namespace songtaste {
-    
-    class CategoryListStruct : public IListStruct {
+namespace songtaste
+{
+
+    class CategoryListStruct : public IListStruct
+    {
     public:
         explicit CategoryListStruct();
         ~CategoryListStruct();
-        
+
         const Json::Value toJson(void);
-        
+
     public:
         std::string idx;
         std::string catid;
@@ -29,7 +31,7 @@ namespace songtaste {
         std::string width;
         std::string catnum;
     };
-    
+
 }
 
 #endif // CATEGORYLISTSTRUCT_H

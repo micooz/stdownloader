@@ -14,19 +14,21 @@
 #define SAFERELEASE(p) if(p) {delete p; p = nullptr;}
 #include <string>
 
-namespace songtaste {
+namespace songtaste
+{
     class ListCollection;
     //class std::string;
-    
-    class ILister {
+
+    class ILister
+    {
     public:
         explicit ILister();
-        
+
         virtual ~ILister();
-        
-        virtual ListCollection* getListAt(const unsigned int page = 1) = 0;
+
+        virtual ListCollection *getListAt(const unsigned int page = 1) = 0;
     };
-    
+
 }
 
 #endif // ILISTER_H

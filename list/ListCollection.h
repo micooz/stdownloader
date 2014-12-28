@@ -4,23 +4,25 @@
 #include <string>
 #include <vector>
 
-namespace songtaste{
+namespace songtaste
+{
     class IListStruct;
-    
-    class ListCollection {
+
+    class ListCollection
+    {
     public:
         explicit ListCollection();
-        
+
         ~ListCollection();
-        
-        void add(IListStruct* item);
-        
+
+        void add(IListStruct *item);
+
         const std::string toJsonString(void);
-        
+
     private:
-        std::vector<IListStruct*> _data;
+        std::vector<IListStruct *> _data;
     };
-    
+
 }
 
 #endif // LISTCOLLECTION_H

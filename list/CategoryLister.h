@@ -15,30 +15,32 @@
 #include <avhttp.hpp>
 #include "ILister.h"
 
-namespace songtaste {
+namespace songtaste
+{
     class ListCollection;
-    
-    class CategoryLister : public ILister {
+
+    class CategoryLister : public ILister
+    {
     public:
         explicit CategoryLister();
         ~CategoryLister();
-        
+
         ListCollection *getListAt(const unsigned int);
-        
+
         ListCollection *getMusicByCatid(const unsigned int catid, unsigned int page = 1);
-        
+
     private:
         std::string _url_category;
         std::string _url_catsong;
         std::string _regex_category;
         std::string _regex_catsong;
-        
+
         boost::asio::io_service _io;
         avhttp::http_stream _http;
-        
+
         ListCollection *_catlist;
         ListCollection *_musiclist;
     };
-    
+
 }
 #endif // CATEGORYLISTER_H

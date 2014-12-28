@@ -10,20 +10,22 @@
 
 #include "IListStruct.h"
 
-namespace songtaste {
-    class CategoryListMusicStruct : public IListStruct {
+namespace songtaste
+{
+    class CategoryListMusicStruct : public IListStruct
+    {
     public:
         explicit CategoryListMusicStruct();
-        
+
         ~CategoryListMusicStruct();
-        
+
         const Json::Value toJson(void);
-        
+
     public:
         std::string songid;
         std::string songname;
         std::string recnum;
-    };  
+    };
 }
 
 #endif // CATEGORYLISTMUSICSTRUCT_H

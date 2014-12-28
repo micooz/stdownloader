@@ -5,12 +5,14 @@
 #include "RecommendListStruct.h"
 #include "Configure.h"
 
-namespace songtaste {
-    
+namespace songtaste
+{
+
     using namespace std;
-    
+
     RecommendLister::RecommendLister():
-        _list(nullptr), _http(_io){
+        _list(nullptr), _http(_io)
+    {
         _url_recommend = Configure::getInstance()->all()["urls"]["recommend"].asString();
         _regex_pattern = Configure::getInstance()->all()["regexs"]["recommend"].asString();
         if (_url_recommend.empty() || _regex_pattern.empty()) {
@@ -18,9 +20,10 @@ namespace songtaste {
         }
         _list = new ListCollection;
     }
-    
-    ListCollection*
-    RecommendLister::getListAt(const unsigned int page /* = 1 */) {
+
+    ListCollection *
+    RecommendLister::getListAt(const unsigned int page /* = 1 */)
+    {
         if (page < 1 || page > 10) {
             throw error("page error");
         }
@@ -36,12 +39,12 @@ namespace songtaste {
         std::stringstream ss;
         ss << &_http;
         std::string html = ss.str();
-        
+
         boost::regex pattern(_regex_pattern);
         boost::smatch matches;
         std::string::const_iterator s = html.begin();
         std::string::const_iterator e = html.end();
-        
+
         while (boost::regex_search(s, e, matches, pattern)) {
             RecommendListStruct *rls = new RecommendListStruct;
             rls->songname   = matches.str(1);
@@ -53,21 +56,22 @@ namespace songtaste {
             rls->rateuid    = matches.str(7);
             rls->ratedt     = matches.str(8);
             rls->rateuname  = matches.str(9);
-            
+
             //add to container
             _list->add(rls);
             //iterate next matching
             s = matches[9].second;
         }
-        
+
         return _list;
     }
-    
-    RecommendLister::~RecommendLister() {
+
+    RecommendLister::~RecommendLister()
+    {
         if (_http.is_open()) {
             _http.close();
         }
         SAFERELEASE(_list);
     }
-    
+
 }

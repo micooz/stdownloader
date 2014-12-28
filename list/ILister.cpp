@@ -6,13 +6,16 @@
 //
 #include "ILister.h"
 
-namespace songtaste {
-    
-    ILister::ILister() {
-        
+namespace songtaste
+{
+
+    ILister::ILister()
+    {
+
     }
-    
-    ILister::~ILister() {
+
+    ILister::~ILister()
+    {
     }
-    
+
 }

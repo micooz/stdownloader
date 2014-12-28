@@ -14,15 +14,17 @@
 #include <string>
 #include "IListStruct.h"
 
-namespace songtaste {
-    
-    class RecommendListStruct : public IListStruct {
+namespace songtaste
+{
+
+    class RecommendListStruct : public IListStruct
+    {
     public:
         explicit RecommendListStruct();
         ~RecommendListStruct();
-        
+
         const Json::Value toJson(void);
-        
+
     public:
         std::string songname;
         std::string songid;
@@ -34,7 +36,7 @@ namespace songtaste {
         std::string ratedt;
         std::string rateuname;
     };
-    
+
 }
 
 #endif // RECOMMENDLISTSTRUCT_H

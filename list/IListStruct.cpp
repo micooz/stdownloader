@@ -6,12 +6,15 @@
 //
 #include "IListStruct.h"
 
-namespace songtaste {
+namespace songtaste
+{
 
-    IListStruct::IListStruct() {
+    IListStruct::IListStruct()
+    {
     }
 
-    IListStruct::~IListStruct() {
+    IListStruct::~IListStruct()
+    {
     }
-    
+
 }

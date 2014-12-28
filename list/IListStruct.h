@@ -15,22 +15,25 @@
 
 #include <string>
 
-namespace Json {
+namespace Json
+{
     class Value;
 }
 
-namespace songtaste {
+namespace songtaste
+{
     class Json::Value;
-    
-    class IListStruct {
+
+    class IListStruct
+    {
     public:
         explicit IListStruct();
-        
+
         virtual ~IListStruct();
-        
+
         virtual const Json::Value toJson(void) = 0;
     };
-    
+
 }
 
 #endif // ILISTSTRUCT_H
