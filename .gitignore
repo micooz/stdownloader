@@ -12,6 +12,7 @@
 #folders
 LIB Debug/
 Debug/
+Release/
 CMakeFiles/
 
 songtaste-build/
