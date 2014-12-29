@@ -27,8 +27,6 @@ namespace songtaste
         ~Configure();
     private:
         explicit Configure();
-
-        const std::string CONFIG_FILE = "config.json";
         Json::Value _config;
     };
     

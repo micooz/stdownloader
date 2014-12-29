@@ -24,6 +24,12 @@ namespace songtaste
             throw std::logic_error(constant::error::configure_error);
         }
 
+        std::string user_agent = config[constant::config::useragent].asString();
+
+        if (!user_agent.empty()) {
+            _http.request_options()(avhttp::http_options::user_agent, user_agent);
+        }
+
         _catlist   = new ListCollection;
         _musiclist = new ListCollection;
     }

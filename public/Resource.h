@@ -13,25 +13,26 @@ namespace songtaste
 {
     namespace constant
     {
-#ifndef CONST(var,val)
-#define CONST(var,val) const std::string var = val
-#endif
         namespace config
         {
-            CONST(urls,         "urls"          );
-            CONST(recommend,    "recommend"     );
-            CONST(category,     "category"      );
-            CONST(catsong,      "catsong"       );
-            CONST(categorylist, "categorylist"  );
-
-            CONST(regexs,       "regexs"        );
-
-
+            const std::string file          =  "config.json";
+            const std::string urls          =  "urls";
+            const std::string recommend     =  "recommend";
+            const std::string category      =  "category";
+            const std::string catsong       =  "catsong";
+            const std::string categorylist  =  "categorylist";
+            const std::string down          =  "down";
+            const std::string time          =  "time";
+            
+            
+            const std::string regexs        =  "regexs";
+            const std::string useragent     =  "useragent";
         }
         namespace error
         {
-            CONST(configure_error, "configure item is empty");
-            CONST(page_error, "page error");
+            const std::string configure_error   =  "configure item is empty";
+            const std::string page_error        =  "page error";
+            const std::string load_config_error =  "cannot load config.json";
         }
 
     }

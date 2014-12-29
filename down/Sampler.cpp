@@ -4,27 +4,32 @@
 #include <sstream>
 #include "Sampler.h"
 
-namespace songtaste{
-    
-    Sampler::Sampler() {
-    } 
-    
-    Sampler::~Sampler() {
+namespace songtaste
+{
+
+    Sampler::Sampler()
+    {
     }
-    
-    Sampler *Sampler::getInstance() {
+
+    Sampler::~Sampler()
+    {
+    }
+
+    Sampler *Sampler::getInstance()
+    {
         static Sampler ins;
         return &ins;
     }
-    
-    void Sampler::sampling(unsigned long interval, unsigned long current, unsigned long total) {
+
+    void Sampler::sampling(unsigned long interval, unsigned long current, unsigned long total)
+    {
         static boost::timer t_interval;
         static Json::Value json;
-        
+
         if (current > total) {
             return;
         }
-        
+
         if (t_interval.elapsed() * 1e3 >= interval || current == total) {
             //calc percentage
             double percent = (double)current / total;
@@ -45,7 +50,7 @@ namespace songtaste{
             std::system("cls");
             std::cout << writer.write(json);
         }
-        
+
     }
-    
+
 }

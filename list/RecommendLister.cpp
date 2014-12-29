@@ -19,6 +19,14 @@ namespace songtaste
         _url_recommend = config[constant::config::urls][constant::config::recommend].asString();
         _regex_pattern = config[constant::config::regexs][constant::config::recommend].asString();
 
+        std::string user_agent = config[constant::config::useragent].asString();
+
+        if (!user_agent.empty()) {
+            avhttp::request_opts opt;
+            opt.insert(avhttp::http_options::user_agent, user_agent);
+            _http.request_options(opt);
+        }
+
         if (_url_recommend.empty() || _regex_pattern.empty()) {
             throw logic_error(constant::error::configure_error);
         }
