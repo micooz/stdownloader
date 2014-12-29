@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
                 unsigned int page  = vm.count("page") ? vm["page"].as<unsigned int>() : 1;
                 CategoryLister *lister = new CategoryLister;
                 cout << lister->getMusicByCatid(catid, page)->toJsonString();
+                SAFERELEASE(lister);
                 break;
             }
 
