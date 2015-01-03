@@ -17,12 +17,17 @@ namespace songtaste
 
         void add(IListStruct *item);
 
-        const std::string toJsonString(void);
+        const std::string toJsonString(bool compress = true);
+        
+        template<typename T>
+        void parseJsonArray(const std::string& jsonstr);
 
     private:
         std::vector<IListStruct *> _data;
     };
 
 }
+
+#include "ListCollectionImpl.h"
 
 #endif // LISTCOLLECTION_H

@@ -1,7 +1,7 @@
 #include <boost/regex.hpp>
 #include "Configure.h"
+#include "CCache.h"
 #include "ListCollection.h"
-#include "IListStruct.h"
 #include "CategoryLister.h"
 #include "CategoryListStruct.h"
 #include "CategoryListMusicStruct.h"
@@ -10,8 +10,8 @@
 namespace songtaste
 {
 
-    CategoryLister::CategoryLister():
-        _catlist(nullptr), _musiclist(nullptr), _http(_io)
+    CategoryLister::CategoryLister(bool cache):
+        _catlist(nullptr), _musiclist(nullptr), _http(_io), _cache(cache)
     {
         Configure &config = *(Configure::getInstance());
 
@@ -43,6 +43,13 @@ namespace songtaste
     ListCollection *
     CategoryLister::getListAt(const unsigned int)
     {
+        //load from cache
+        CCache cache;
+        if (_cache && cache.exsit(CCache::CATEGORY)) {
+            cache.load(CCache::CATEGORY, _catlist);
+            return _catlist;
+        }
+        //no cache
         boost::system::error_code ec;
         //open connection
         _http.open(_url_category, ec);
@@ -70,7 +77,10 @@ namespace songtaste
             //iterate next matching
             s = matches[5].second;
         }
-
+        //cache
+        if (_cache) {
+            cache.save(_catlist, CCache::CATEGORY);
+        }
         return _catlist;
     }
 

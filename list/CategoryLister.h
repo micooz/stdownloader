@@ -22,7 +22,7 @@ namespace songtaste
     class CategoryLister : public ILister
     {
     public:
-        explicit CategoryLister();
+        explicit CategoryLister(bool cache = false);
         ~CategoryLister();
 
         ListCollection *getListAt(const unsigned int);
@@ -30,6 +30,8 @@ namespace songtaste
         ListCollection *getMusicByCatid(const unsigned int catid, unsigned int page = 1);
 
     private:
+        bool _cache;
+        
         std::string _url_category;
         std::string _url_catsong;
         std::string _regex_category;

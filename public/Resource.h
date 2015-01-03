@@ -27,12 +27,16 @@ namespace songtaste
             
             const std::string regexs        =  "regexs";
             const std::string useragent     =  "useragent";
+            const std::string cachepath     =  "cachepath";
         }
+        
         namespace error
         {
-            const std::string configure_error   =  "configure item is empty";
-            const std::string page_error        =  "page error";
-            const std::string load_config_error =  "cannot load config.json";
+            const std::string configure_error        =  "configure item is empty";
+            const std::string page_error             =  "page error";
+            const std::string load_config_error      =  "cannot load config.json";
+            const std::string create_directory_error =  "cannot create directory";
+            const std::string load_cache_error       =  "loading cache failed";
         }
 
     }

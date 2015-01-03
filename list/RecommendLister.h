@@ -22,12 +22,14 @@ namespace songtaste
     class RecommendLister : public ILister
     {
     public:
-        explicit RecommendLister();
+        explicit RecommendLister(bool cache = false);
         ~RecommendLister();
 
         ListCollection *getListAt(const unsigned int page = 1);
 
     private:
+        bool _cache;
+        
         std::string _url_recommend;
         std::string _regex_pattern;
 

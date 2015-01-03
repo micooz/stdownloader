@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     ("recommend",   "get recommend list")
     ("category",    "get category list")
     ("catsong",     "get song list from a category, require --catid")
+    ("cache",       "cache list(category) or load from cache if exist")
     ("catid",       value<unsigned int>(), "category id")
     ("page",        value<unsigned int>(), "page number, default to 1");
 
@@ -38,14 +39,14 @@ int main(int argc, char *argv[])
 
             if (vm.count("recommend")) {
                 unsigned int page = vm.count("page") ? vm["page"].as<unsigned int>() : 1;
-                ILister *pLister  = new RecommendLister;
+                ILister *pLister  = new RecommendLister(vm.count("cache"));
                 cout << pLister->getListAt(page)->toJsonString();
                 SAFERELEASE(pLister);
                 break;
             }
 
             if (vm.count("category")) {
-                ILister *lister = new CategoryLister;
+                ILister *lister = new CategoryLister(vm.count("cache"));
                 cout << lister->getListAt()->toJsonString();
                 SAFERELEASE(lister);
                 break;
@@ -63,7 +64,7 @@ int main(int argc, char *argv[])
         } while (0);
 
     } catch (const exception &err) {
-        cout << err.what() << endl;
+        cout << err.what();
     }
 
     return 0;

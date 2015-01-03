@@ -23,6 +23,10 @@ namespace songtaste
         ~CategoryListStruct();
 
         const Json::Value toJson(void);
+        
+        void parseJson(const std::string &jsonstr);
+        
+        void parseJson(const Json::Value &jsonval);
 
     public:
         std::string idx;

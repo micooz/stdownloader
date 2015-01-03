@@ -32,6 +32,7 @@ int main() {
     root["regexs"   ]  = regexs;
     root["parse"    ]  = parse;
     root["useragent"]  = "Mozilla/5.0 (Windows NT 6.3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36";
+    root["cachepath"]  = "./cache/";
     //
     std::string json;
     json.reserve(200);

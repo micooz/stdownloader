@@ -1,6 +1,7 @@
 #include <json/json.h>
 #include "IListStruct.h"
 #include "ListCollection.h"
+#include "Resource.h"
 
 namespace songtaste
 {
@@ -22,16 +23,24 @@ namespace songtaste
         _data.push_back(item);
     }
 
-    const std::string ListCollection::toJsonString()
+    const std::string ListCollection::toJsonString(bool compress /* = true */)
     {
-        Json::FastWriter writer;
+        Json::Writer *writer = nullptr;
+        if (compress) {
+            writer = new Json::FastWriter;
+        } else {
+            writer = new Json::StyledWriter;
+        }
+
         Json::Value root;
 
         for (IListStruct *item : _data) {
             root.append(item->toJson());
         }
+        std::string json = writer->write(root);
 
-        return writer.write(root);
+        SAFERELEASE(writer);
+        return json;
     }
 
 }

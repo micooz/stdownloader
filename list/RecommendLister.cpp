@@ -1,18 +1,17 @@
 #include <boost/regex.hpp>
 #include <sstream>
+#include "CCache.h"
+#include "Configure.h"
 #include "ListCollection.h"
 #include "RecommendLister.h"
 #include "RecommendListStruct.h"
-#include "Configure.h"
 #include "Resource.h"
 
 namespace songtaste
 {
 
-    using namespace std;
-
-    RecommendLister::RecommendLister():
-        _list(nullptr), _http(_io)
+    RecommendLister::RecommendLister(bool cache):
+        _list(nullptr), _http(_io), _cache(cache)
     {
         Configure &config = *(Configure::getInstance());
 
@@ -37,6 +36,13 @@ namespace songtaste
     ListCollection *
     RecommendLister::getListAt(const unsigned int page /* = 1 */)
     {
+        //load from cache
+        CCache cache;
+        if (_cache && cache.exsit(CCache::RECOMMEND)) {
+            cache.load(CCache::RECOMMEND, _list);
+            return _list;
+        }
+        //no cache
         if (page < 1 || page > 10) {
             throw logic_error(constant::error::page_error);
         }
@@ -75,6 +81,10 @@ namespace songtaste
             s = matches[9].second;
         }
 
+        //cache
+        if (_cache) {
+            cache.save(_list, CCache::RECOMMEND);
+        }
         return _list;
     }
 

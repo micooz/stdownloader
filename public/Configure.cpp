@@ -7,19 +7,19 @@ namespace songtaste
 
     Configure::Configure()
     {
-        do{
+        do {
             std::ifstream fs(constant::config::file);
-            if(!fs.good()) break;
-            
+            if (!fs.good()) break;
+
             Json::Reader reader;
-            
+
             if (!reader.parse(fs, _config, false)) break;
-            
-            fs.close();            
-            
+
+            fs.close();
+
             return;
-        }while(0);
-        
+        } while (0);
+
         throw std::logic_error(constant::error::load_config_error);
     }
 

@@ -32,6 +32,11 @@ namespace songtaste
         virtual ~IListStruct();
 
         virtual const Json::Value toJson(void) = 0;
+        
+        virtual void parseJson(const std::string &jsonstr) = 0;
+        
+        virtual void parseJson(const Json::Value &jsonval) = 0;
+        
     };
 
 }
