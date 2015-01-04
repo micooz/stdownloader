@@ -21,6 +21,7 @@ namespace songtaste
     {
     public:
         explicit RecommendListStruct();
+        
         ~RecommendListStruct();
 
         const Json::Value toJson(void);

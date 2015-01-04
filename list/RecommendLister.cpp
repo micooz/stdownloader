@@ -1,7 +1,7 @@
 #include <boost/regex.hpp>
 #include <sstream>
-#include "ICache.h"
 #include "Configure.h"
+#include "Utils.hpp"
 #include "ListCollection.h"
 #include "RecommendLister.h"
 #include "RecommendListStruct.h"
@@ -21,11 +21,7 @@ namespace songtaste
 
         std::string user_agent = config[constant::config::useragent].asString();
 
-        if (!user_agent.empty()) {
-            avhttp::request_opts opt;
-            opt.insert(avhttp::http_options::user_agent, user_agent);
-            _http.request_options(opt);
-        }
+        setUserAgent(user_agent, &_http);
 
         if (_url_recommend.empty() || _regex_pattern.empty()) {
             throw std::logic_error(constant::error::configure_error);

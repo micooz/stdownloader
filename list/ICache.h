@@ -11,7 +11,7 @@ namespace songtaste
     {
     public:
         explicit ICache();
-        ~ICache();
+        virtual ~ICache();
 
         virtual bool exsit(void) = 0;
 

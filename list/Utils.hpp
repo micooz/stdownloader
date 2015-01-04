@@ -2,6 +2,7 @@
 #define UTILS_HPP
 
 #include <string>
+#include <avhttp.hpp>
 
 namespace songtaste
 {
@@ -19,6 +20,15 @@ namespace songtaste
             result.push_back(*i);
         }
         return result;
+    }
+
+    static void setUserAgent(const std::string &ua, avhttp::http_stream *http)
+    {
+        if (!ua.empty()) {
+            avhttp::request_opts opt;
+            opt.insert(avhttp::http_options::user_agent, ua);
+            http->request_options(opt);
+        }
     }
 
 }

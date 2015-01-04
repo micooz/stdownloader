@@ -2,11 +2,12 @@
 #include <fstream>
 #include <json/json.h>
 
-int main() {
+int main()
+{
     using namespace Json;
-    
+
     StyledWriter writer;
-    
+
     Value urls;
     urls["recommend"]   = "http://www.songtaste.com/music";
     urls["category" ]   = "http://www.songtaste.com/music/cat";
@@ -15,17 +16,18 @@ int main() {
     urls["chart"    ]   = "http://www.songtaste.com/music/chart";
     urls["down"     ]   = "http://songtaste.com/playmusic.php?song_id=";
     urls["time"     ]   = "http://songtaste.com/time.php";
-    
+
     Value regexs;
     regexs["recommend"   ]  = "MSL\\(\"(.*?)\", \"(\\d+)\", \"(.*?)\\s\", \"(\\d+)\", \"(.*?)\", \"(\\d+)\", \"(\\d+)\", \"(.*?)\", \"(.*?)\\s\"\\);";
     regexs["categorylist"]  = "WL\\(\"(\\d{0,})\",\"(\\d{0, })\", \"(.*?)\",\"(\\d+)\", \"(\\d+)\"\\);";
     regexs["catsong"     ]  = "song/(\\d{0,})/\">(.*?)</a>.*?\\s(\\d{0,})\\s</div>";
+    regexs["chart"       ]  = "WD\\(\"(.*?)\",\"(.*?)\"\\)";
     regexs["down"        ]  = "WrtSongLine\\(\"(\\d+)\", \"(.*?)\", \"(.*?)\\s\", \"(\\d{0,})\", \"(\\d{0,})\", \"(.*?)\", \"(.*?)\"\\);";
-    
+
     Value parse;
     parse["first"]  = "([a-z]+)\\s+:\\s(.*?)\\n";
     parse["second"] = "Duration:\\s(.*?),\\sstart:\\s(.*?),\\sbitrate:\\s(.*?)\\n.+?Audio:\\s(.*?)\\n";
-    
+
     //
     Value root;
     root["urls"     ]  = urls;
@@ -37,10 +39,10 @@ int main() {
     std::string json;
     json.reserve(200);
     json = writer.write(root);
-    
+
     std::ofstream out("config.json");
     out << json;
     out.close();
-    
+
     return 0;
 }

@@ -35,7 +35,10 @@ SOURCES += \
     CategoryListMusicStruct.cpp \
     ICache.cpp \
     CategoryCache.cpp \
-    RecommendCache.cpp
+    RecommendCache.cpp \
+    WeekLister.cpp \
+    WeekCache.cpp \
+    WeekListStruct.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -55,5 +58,8 @@ HEADERS += \
     ICache.h \
     CategoryCache.h \
     Utils.hpp \
-    RecommendCache.h
+    RecommendCache.h \
+    WeekLister.h \
+    WeekCache.h \
+    WeekListStruct.h
 

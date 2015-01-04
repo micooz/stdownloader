@@ -2,6 +2,7 @@
 #include <iostream>
 #include "RecommendLister.h"
 #include "CategoryLister.h"
+#include "WeekLister.h"
 #include "ListCollection.h"
 
 using namespace boost::program_options;
@@ -12,13 +13,14 @@ int main(int argc, char *argv[])
 {
     options_description desc("Usage");
     desc.add_options()
-    ("help,h",      "show help information")
-    ("recommend",   "get recommend list")
-    ("category",    "get category list")
-    ("catsong",     "get song list from a category, require --catid")
-    ("cache",       "cache list(category) or load from cache if exist")
-    ("catid",       value<unsigned int>(), "category id")
-    ("page",        value<unsigned int>(), "page number, default to 1");
+    ("help,h",      "show help information"                             )
+    ("recommend",   "get recommend list"                                )
+    ("category",    "get category list"                                 )
+    ("week",        "get week list"                                     )
+    ("catsong",     "get song list from a category, require --catid"    )
+    ("cache",       "cache list(category) or load from cache if exist"  )
+    ("catid",       value<unsigned int>(), "category id"                )
+    ("page",        value<unsigned int>(), "page number, default to 1"  );
 
     variables_map vm;
     try {
@@ -47,6 +49,13 @@ int main(int argc, char *argv[])
 
             if (vm.count("category")) {
                 ILister *lister = new CategoryLister(vm.count("cache"));
+                cout << lister->getListAt()->toJsonString();
+                SAFERELEASE(lister);
+                break;
+            }
+
+            if (vm.count("week")) {
+                ILister *lister = new WeekLister(vm.count("cache"));
                 cout << lister->getListAt()->toJsonString();
                 SAFERELEASE(lister);
                 break;

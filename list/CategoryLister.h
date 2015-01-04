@@ -17,7 +17,6 @@
 
 namespace songtaste
 {
-    class ListCollection;
 
     class CategoryLister : public ILister
     {

@@ -16,11 +16,14 @@ namespace songtaste
         namespace config
         {
             const std::string file          =  "config.json";
+            
             const std::string urls          =  "urls";
             const std::string recommend     =  "recommend";
             const std::string category      =  "category";
             const std::string catsong       =  "catsong";
             const std::string categorylist  =  "categorylist";
+            const std::string chart         =  "chart";
+            const std::string week          =  "week";
             const std::string down          =  "down";
             const std::string time          =  "time";
             

@@ -5,13 +5,14 @@
 #include "CategoryListStruct.h"
 #include "CategoryListMusicStruct.h"
 #include "CategoryCache.h"
+#include "Utils.hpp"
 #include "Resource.h"
 
 namespace songtaste
 {
 
-    CategoryLister::CategoryLister(bool cache):
-        _catlist(nullptr), _musiclist(nullptr), _http(_io), _cache(cache)
+    CategoryLister::CategoryLister(bool cache)
+        : _catlist(nullptr), _musiclist(nullptr), _http(_io), _cache(cache)
     {
         Configure &config = *(Configure::getInstance());
 
@@ -26,9 +27,7 @@ namespace songtaste
 
         std::string user_agent = config[constant::config::useragent].asString();
 
-        if (!user_agent.empty()) {
-            _http.request_options()(avhttp::http_options::user_agent, user_agent);
-        }
+        setUserAgent(user_agent, &_http);
 
         _catlist   = new ListCollection;
         _musiclist = new ListCollection;
