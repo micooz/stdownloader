@@ -1,10 +1,11 @@
 #include <boost/regex.hpp>
 #include <sstream>
-#include "CCache.h"
+#include "ICache.h"
 #include "Configure.h"
 #include "ListCollection.h"
 #include "RecommendLister.h"
 #include "RecommendListStruct.h"
+#include "RecommendCache.h"
 #include "Resource.h"
 
 namespace songtaste
@@ -27,7 +28,7 @@ namespace songtaste
         }
 
         if (_url_recommend.empty() || _regex_pattern.empty()) {
-            throw logic_error(constant::error::configure_error);
+            throw std::logic_error(constant::error::configure_error);
         }
 
         _list = new ListCollection;
@@ -37,14 +38,15 @@ namespace songtaste
     RecommendLister::getListAt(const unsigned int page /* = 1 */)
     {
         //load from cache
-        CCache cache;
-        if (_cache && cache.exsit(CCache::RECOMMEND)) {
-            cache.load(CCache::RECOMMEND, _list);
+        ICache *cache = new RecommendCache(page);
+        if (_cache && cache->exsit()) {
+            cache->load(_list);
+            SAFERELEASE(cache);
             return _list;
         }
         //no cache
         if (page < 1 || page > 10) {
-            throw logic_error(constant::error::page_error);
+            throw std::logic_error(constant::error::page_error);
         }
         boost::system::error_code ec;
         //support for paging
@@ -53,7 +55,7 @@ namespace songtaste
         //open connection
         _http.open(conv.str(), ec);
         if (ec) {
-            throw logic_error(ec.message());
+            throw std::logic_error(ec.message());
         }
         std::stringstream ss;
         ss << &_http;
@@ -83,7 +85,8 @@ namespace songtaste
 
         //cache
         if (_cache) {
-            cache.save(_list, CCache::RECOMMEND);
+            cache->save(_list);
+            SAFERELEASE(cache);
         }
         return _list;
     }

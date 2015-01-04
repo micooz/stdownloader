@@ -1,10 +1,10 @@
 #include <boost/regex.hpp>
 #include "Configure.h"
-#include "CCache.h"
 #include "ListCollection.h"
 #include "CategoryLister.h"
 #include "CategoryListStruct.h"
 #include "CategoryListMusicStruct.h"
+#include "CategoryCache.h"
 #include "Resource.h"
 
 namespace songtaste
@@ -44,9 +44,10 @@ namespace songtaste
     CategoryLister::getListAt(const unsigned int)
     {
         //load from cache
-        CCache cache;
-        if (_cache && cache.exsit(CCache::CATEGORY)) {
-            cache.load(CCache::CATEGORY, _catlist);
+        ICache *cache = new CategoryCache;
+        if (_cache && cache->exsit()) {
+            cache->load(_catlist);
+            SAFERELEASE(cache);
             return _catlist;
         }
         //no cache
@@ -79,7 +80,8 @@ namespace songtaste
         }
         //cache
         if (_cache) {
-            cache.save(_catlist, CCache::CATEGORY);
+            cache->save(_catlist);
+            SAFERELEASE(cache);
         }
         return _catlist;
     }

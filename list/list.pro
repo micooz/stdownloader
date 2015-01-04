@@ -33,7 +33,9 @@ SOURCES += \
     CategoryLister.cpp \
     CategoryListStruct.cpp \
     CategoryListMusicStruct.cpp \
-    CCache.cpp
+    ICache.cpp \
+    CategoryCache.cpp \
+    RecommendCache.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -49,6 +51,9 @@ HEADERS += \
     CategoryLister.h \
     CategoryListStruct.h \
     CategoryListMusicStruct.h \
-    CCache.h \
-    ListCollectionImpl.h
+    ListCollectionImpl.h \
+    ICache.h \
+    CategoryCache.h \
+    Utils.hpp \
+    RecommendCache.h
 
