@@ -3,6 +3,7 @@
 #include "RecommendLister.h"
 #include "CategoryLister.h"
 #include "WeekLister.h"
+#include "WeekMusicLister.h"
 #include "ListCollection.h"
 
 using namespace boost::program_options;
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     ("recommend",   "get recommend list"                                )
     ("category",    "get category list"                                 )
     ("week",        "get week list"                                     )
+    ("weekchart",   "get week music chart"                              )
     ("catsong",     "get song list from a category, require --catid"    )
     ("cache",       "cache list(category) or load from cache if exist"  )
     ("catid",       value<unsigned int>(), "category id"                )
@@ -56,6 +58,13 @@ int main(int argc, char *argv[])
 
             if (vm.count("week")) {
                 ILister *lister = new WeekLister(vm.count("cache"));
+                cout << lister->getListAt()->toJsonString();
+                SAFERELEASE(lister);
+                break;
+            }
+
+            if (vm.count("weekchart")) {
+                ILister *lister = new WeekMusicLister(vm.count("cache"));
                 cout << lister->getListAt()->toJsonString();
                 SAFERELEASE(lister);
                 break;

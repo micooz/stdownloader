@@ -23,6 +23,7 @@ namespace songtaste
             const std::string catsong       =  "catsong";
             const std::string categorylist  =  "categorylist";
             const std::string chart         =  "chart";
+            const std::string chartmusic    =  "chartmusic";
             const std::string week          =  "week";
             const std::string down          =  "down";
             const std::string time          =  "time";

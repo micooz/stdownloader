@@ -38,7 +38,10 @@ SOURCES += \
     RecommendCache.cpp \
     WeekLister.cpp \
     WeekCache.cpp \
-    WeekListStruct.cpp
+    WeekListStruct.cpp \
+    WeekMusicLister.cpp \
+    WeekMusicCache.cpp \
+    WeekMusicListStruct.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -61,5 +64,8 @@ HEADERS += \
     RecommendCache.h \
     WeekLister.h \
     WeekCache.h \
-    WeekListStruct.h
+    WeekListStruct.h \
+    WeekMusicLister.h \
+    WeekMusicCache.h \
+    WeekMusicListStruct.h
 
