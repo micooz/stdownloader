@@ -1,8 +1,10 @@
 #ifndef LISTCOLLECTIONIMPL
 #define LISTCOLLECTIONIMPL
+
 #include <json/json.h>
 #include "IListStruct.h"
 #include "Resource.h"
+#include "Utils.hpp"
 
 namespace songtaste
 {
@@ -14,7 +16,9 @@ namespace songtaste
         Json::Reader reader;
         Json::Value  root;
 
-        if (!reader.parse(jsonstr, root)) {
+        std::string json = convertSpace(jsonstr, true);
+
+        if (!reader.parse(json, root)) {
             throw std::logic_error(constant::error::load_cache_error);
         }
 

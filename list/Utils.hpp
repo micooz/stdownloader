@@ -7,16 +7,32 @@
 namespace songtaste
 {
 
-    static std::string clearspace(const std::string &str)
+    static std::string convertSpace(const std::string &source, bool reverse = false)
     {
         typedef std::string::const_iterator iterator;
-        iterator begin = str.cbegin();
-        iterator end   = str.cend();
+        iterator begin = source.cbegin();
+        iterator end   = source.cend();
         std::string result;
-        result.reserve(str.size());
+        result.reserve(source.size());
         for (auto i = begin; i != end; ++i) {
-            if (*i == ' ')
-                continue;
+            if (reverse) {
+                if ( i + 5 != end
+                     && *i == '&'
+                     && *(i + 1) == 'n'
+                     && *(i + 2) == 'b'
+                     && *(i + 3) == 's'
+                     && *(i + 4) == 'p'
+                     && *(i + 5) == ';') {
+                    result.push_back(' ');
+                    i += 5;
+                    continue;
+                }
+            } else {
+                if (*i == ' ') {
+                    result.append("&nbsp;");
+                    continue;
+                }
+            }
             result.push_back(*i);
         }
         return result;
