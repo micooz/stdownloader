@@ -1,5 +1,5 @@
-#include <boost/filesystem.hpp>
-#include "Utils.hpp"
+#include <fstream>
+#include <assert.h>
 #include "Configure.h"
 #include "ListCollection.h"
 #include "Resource.h"
@@ -19,21 +19,6 @@ namespace songtaste
     WeekMusicCache::~WeekMusicCache()
     {
 
-    }
-
-    bool WeekMusicCache::exsit()
-    {
-        return boost::filesystem::exists(file());
-    }
-
-    void WeekMusicCache::save(ListCollection *collection)
-    {
-        assert(collection != nullptr);
-        std::ofstream out(file(), std::ios::binary);
-        std::string jsonstr = collection->toJsonString();
-        out << clearspace(jsonstr);
-        out.flush();
-        out.close();
     }
 
     void WeekMusicCache::load(ListCollection *list)

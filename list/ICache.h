@@ -13,9 +13,9 @@ namespace songtaste
         explicit ICache();
         virtual ~ICache();
 
-        virtual bool exsit(void) = 0;
+        virtual bool exsit(void);
 
-        virtual void save(ListCollection *collection) = 0;
+        virtual void save(ListCollection *collection);
 
         virtual void load(ListCollection *list) = 0;
 

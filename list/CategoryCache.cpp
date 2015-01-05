@@ -21,23 +21,6 @@ namespace songtaste
 
     }
 
-    bool
-    CategoryCache::exsit(void)
-    {
-        return boost::filesystem::exists(file());
-    }
-
-    void
-    CategoryCache::save(ListCollection *collection)
-    {
-        assert(collection != nullptr);
-        std::ofstream out(file(), std::ios::binary);
-        std::string jsonstr = collection->toJsonString();
-        out << clearspace(jsonstr);
-        out.flush();
-        out.close();
-    }
-
     void
     CategoryCache::load(ListCollection *list)
     {

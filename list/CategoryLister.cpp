@@ -12,16 +12,14 @@ namespace songtaste
 {
 
     CategoryLister::CategoryLister(bool cache)
-        : _catlist(nullptr), _musiclist(nullptr), _http(_io), _cache(cache)
+        : _catlist(nullptr), _http(_io), _cache(cache)
     {
         Configure &config = *(Configure::getInstance());
 
         _url_category   = config[constant::config::urls][constant::config::category].asString();
-        _url_catsong    = config[constant::config::urls][constant::config::catsong].asString();
         _regex_category = config[constant::config::regexs][constant::config::categorylist].asString();
-        _regex_catsong  = config[constant::config::regexs][constant::config::catsong].asString();
 
-        if (_url_category.empty() || _regex_category.empty() || _regex_catsong.empty() || _url_catsong.empty()) {
+        if (_url_category.empty() || _regex_category.empty()) {
             throw std::logic_error(constant::error::configure_error);
         }
 
@@ -30,13 +28,11 @@ namespace songtaste
         setUserAgent(user_agent, &_http);
 
         _catlist   = new ListCollection;
-        _musiclist = new ListCollection;
     }
 
     CategoryLister::~CategoryLister()
     {
         SAFERELEASE(_catlist);
-        SAFERELEASE(_musiclist);
     }
 
     ListCollection *
@@ -83,43 +79,6 @@ namespace songtaste
             SAFERELEASE(cache);
         }
         return _catlist;
-    }
-
-    ListCollection *
-    CategoryLister::getMusicByCatid(const unsigned int catid, unsigned int page)
-    {
-        boost::system::error_code ec;
-
-        std::stringstream conv;
-        conv << _url_catsong << "/cat" << catid << "/" << page;
-
-        std::string url = conv.str();
-        //open connection
-        _http.open(url, ec);
-        if (ec) {
-            throw std::logic_error(ec.message());
-        }
-        std::stringstream ss;
-        ss << &_http;
-        std::string html = ss.str();
-
-        boost::regex pattern(_regex_catsong);
-        boost::smatch matches;
-        std::string::const_iterator s = html.begin();
-        std::string::const_iterator e = html.end();
-
-        while (boost::regex_search(s, e, matches, pattern)) {
-            auto clms = new CategoryListMusicStruct;
-            clms->songid    =  matches.str(1);
-            clms->songname  =  matches.str(2);
-            clms->recnum    =  matches.str(3);
-            //add to container
-            _musiclist->add(clms);
-            //iterate next matching
-            s = matches[3].second;
-        }
-
-        return _musiclist;
     }
 
 }

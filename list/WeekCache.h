@@ -13,10 +13,6 @@ namespace songtaste
 
         ~WeekCache();
 
-        bool exsit(void);
-
-        void save(ListCollection *collection);
-
         void load(ListCollection *list);
 
         std::string file(void) const;

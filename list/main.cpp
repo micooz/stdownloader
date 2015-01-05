@@ -2,6 +2,7 @@
 #include <iostream>
 #include "RecommendLister.h"
 #include "CategoryLister.h"
+#include "CategoryMusicLister.h"
 #include "WeekLister.h"
 #include "WeekMusicLister.h"
 #include "ListCollection.h"
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
     ("week",        "get week list"                                     )
     ("weekchart",   "get week music chart"                              )
     ("catsong",     "get song list from a category, require --catid"    )
-    ("cache",       "cache list(category) or load from cache if exist"  )
+    ("cache",       "cache list or load from cache if exist"            )
     ("catid",       value<unsigned int>(), "category id"                )
     ("page",        value<unsigned int>(), "page number, default to 1"  );
 
@@ -56,6 +57,16 @@ int main(int argc, char *argv[])
                 break;
             }
 
+            if (vm.count("catsong") && vm.count("catid")) {
+                unsigned int catid = vm["catid"].as<unsigned int>();
+                unsigned int page  = vm.count("page") ? vm["page"].as<unsigned int>() : 1;
+                bool cache         = vm.count("cache");
+                ILister *lister = new CategoryMusicLister(catid, cache);
+                cout << lister->getListAt(page)->toJsonString();
+                SAFERELEASE(lister);
+                break;
+            }
+
             if (vm.count("week")) {
                 ILister *lister = new WeekLister(vm.count("cache"));
                 cout << lister->getListAt()->toJsonString();
@@ -66,15 +77,6 @@ int main(int argc, char *argv[])
             if (vm.count("weekchart")) {
                 ILister *lister = new WeekMusicLister(vm.count("cache"));
                 cout << lister->getListAt()->toJsonString();
-                SAFERELEASE(lister);
-                break;
-            }
-
-            if (vm.count("catsong") && vm.count("catid")) {
-                unsigned int catid = vm["catid"].as<unsigned int>();
-                unsigned int page  = vm.count("page") ? vm["page"].as<unsigned int>() : 1;
-                CategoryLister *lister = new CategoryLister;
-                cout << lister->getMusicByCatid(catid, page)->toJsonString();
                 SAFERELEASE(lister);
                 break;
             }

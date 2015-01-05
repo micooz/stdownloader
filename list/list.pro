@@ -41,7 +41,9 @@ SOURCES += \
     WeekListStruct.cpp \
     WeekMusicLister.cpp \
     WeekMusicCache.cpp \
-    WeekMusicListStruct.cpp
+    WeekMusicListStruct.cpp \
+    CategoryMusicLister.cpp \
+    CategoryMusicCache.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -67,5 +69,7 @@ HEADERS += \
     WeekListStruct.h \
     WeekMusicLister.h \
     WeekMusicCache.h \
-    WeekMusicListStruct.h
+    WeekMusicListStruct.h \
+    CategoryMusicLister.h \
+    CategoryMusicCache.h
 

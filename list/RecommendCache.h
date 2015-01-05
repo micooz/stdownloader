@@ -9,12 +9,9 @@ namespace songtaste
     class RecommendCache : public ICache
     {
     public:
-        RecommendCache(unsigned int page = 1);
+        explicit RecommendCache(unsigned int page = 1);
+        
         ~RecommendCache();
-        
-        bool exsit(void);
-        
-        void save(ListCollection *collection);
         
         void load(ListCollection *list);
         

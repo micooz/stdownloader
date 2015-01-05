@@ -1,29 +1,29 @@
 #include <boost/format.hpp>
 #include <fstream>
+#include "CategoryMusicCache.h"
 #include "Configure.h"
-#include "Resource.h"
-#include "RecommendCache.h"
-#include "RecommendListStruct.h"
+#include "CategoryListMusicStruct.h"
 #include "ListCollection.h"
+#include "Resource.h"
 
 namespace songtaste
 {
 
-    RecommendCache::RecommendCache(unsigned int page /* = 1 */)
-        : _page(page)
+    CategoryMusicCache::CategoryMusicCache(unsigned int catid, unsigned int page /* = 1 */)
+        : _page(page), _catid(catid)
     {
         Configure &config = *(Configure::getInstance());
 
         _dir = config[constant::config::cachepath].asString();
     }
 
-    RecommendCache::~RecommendCache()
+    CategoryMusicCache::~CategoryMusicCache()
     {
 
     }
 
     void
-    RecommendCache::load(ListCollection *list)
+    CategoryMusicCache::load(ListCollection *list)
     {
         assert(list != nullptr);
 
@@ -32,16 +32,18 @@ namespace songtaste
         in >> json;
         in.close();
 
-        list->parseJsonArray<RecommendListStruct>(json);
+        list->parseJsonArray<CategoryListMusicStruct>(json);
     }
 
     std::string
-    RecommendCache::file() const
+    CategoryMusicCache::file() const
     {
-        boost::format formater("%s%s%s%d%s");
+        boost::format formater("%s%s%s%d%s%d%s");
         formater
         % _dir
-        % constant::config::recommend
+        % constant::config::catsong
+        % "_"
+        % _catid
         % "_"
         % _page
         % ".json";
@@ -50,6 +52,3 @@ namespace songtaste
     }
 
 }
-
-
-

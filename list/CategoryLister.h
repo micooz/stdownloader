@@ -26,21 +26,16 @@ namespace songtaste
 
         ListCollection *getListAt(const unsigned int);
 
-        ListCollection *getMusicByCatid(const unsigned int catid, unsigned int page = 1);
-
     private:
         bool _cache;
         
         std::string _url_category;
-        std::string _url_catsong;
         std::string _regex_category;
-        std::string _regex_catsong;
 
         boost::asio::io_service _io;
         avhttp::http_stream _http;
 
         ListCollection *_catlist;
-        ListCollection *_musiclist;
     };
 
 }
