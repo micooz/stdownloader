@@ -8,6 +8,10 @@
 *.opensdf
 *.user
 *.3-pre1
+*.exe
+*.pc
+Makefile
+CMakeCache.txt
 
 #folders
 LIB Debug/
