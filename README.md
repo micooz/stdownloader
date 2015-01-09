@@ -1,5 +1,10 @@
 # StDownloader
+
 C++实现的跨平台 songtaste.com 音乐下载工具
+
+# 项目主页
+
+http://git.oschina.net/micooz/StDownloader
 
 # 开发环境
 
