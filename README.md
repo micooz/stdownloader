@@ -49,13 +49,15 @@ $ cmake . -G "MinGW Makefiles"
 $ mingw32-make
 ```
 
-完成后在`lib`下可以找到`libjsoncpp.a`
-
 ### Linux
 
 ```
-
+$ cd libs/jsoncpp-0.7.0/
+$ sudo cmake .
+$ sudo make
 ```
+
+完成后在`lib`下可以找到`libjsoncpp.a`
 
 ## 编译StDownloader
 
@@ -77,7 +79,8 @@ $ mingw32-make
 ### Linux
 
 ```
-
+$ sudo cmake .
+$ sudo make
 ```
 
 # 工具简介
