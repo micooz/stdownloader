@@ -9,9 +9,9 @@ INCLUDEPATH += ../public/
 INCLUDEPATH += ../libs/jsoncpp-0.7.0/include/
 
 LIBS += -L D:/libs/boost_1_56_0/stage/lib/ \
-        -lboost_regex-mgw48-mt-s-1_56 \
-        -lboost_filesystem-mgw48-mt-s-1_56 \
-        -lboost_system-mgw48-mt-s-1_56
+        -lboost_regex-mgw49-mt-1_56 \
+        -lboost_filesystem-mgw49-mt-1_56 \
+        -lboost_system-mgw49-mt-1_56
 
 LIBS += "../jsoncpp-0.7.0-build/lib/libjsoncpp.a"
 

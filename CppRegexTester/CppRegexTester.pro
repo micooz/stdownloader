@@ -13,8 +13,7 @@ TEMPLATE = app
 
 INCLUDEPATH += D:\libs\boost_1_56_0
 LIBS += -L D:\libs\boost_1_56_0\stage\lib
-LIBS += -lboost_regex-mgw48-mt-d-1_56
-LIBS += -lboost_regex-mgw48-mt-s-1_56
+LIBS += -lboost_regex-mgw49-mt-1_56
 
 SOURCES += main.cpp\
         mainwindow.cpp

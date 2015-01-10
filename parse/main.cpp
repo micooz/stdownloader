@@ -12,23 +12,21 @@ using namespace std;
 
 const string help = "Usage: parse audio-file";
 
-typedef map<string, string>      metaData;
+typedef map<string, string>     metaData;
 typedef shared_ptr<metaData>    MetaData;
 
 static MetaData parse(const char *buf)
 {
     songtaste::Configure &config = *(songtaste::Configure::getInstance());
-    string pattern_1 = config["parse"]["first"].asString();
-    string pattern_2 = config["parse"]["second"].asString();
+    string patternstr = config["parse"].asString();
 
-    if (pattern_1.empty() || pattern_2.empty()) {
+    if (patternstr.empty()) {
         throw logic_error("config error");
     }
 
-
     string org(buf);
     metaData *pdata = new metaData;
-    boost::regex pattern(pattern_1);
+    boost::regex pattern(patternstr);
     boost::smatch matches;
 
     std::string::const_iterator s = org.begin();
@@ -38,20 +36,7 @@ static MetaData parse(const char *buf)
         (*pdata)[matches.str(1)] = matches.str(2);
         s = matches[2].second;
     }
-
-    pattern.assign(pattern_2);
-
-    s = org.begin();
-    e = org.end();
-
-    while (boost::regex_search(s, e, matches, pattern)) {
-        (*pdata)["duration"]  = matches.str(1);
-        (*pdata)["start"   ]  = matches.str(2);
-        (*pdata)["bitrate" ]  = matches.str(3);
-        (*pdata)["audio"   ]  = matches.str(4);
-        s = matches[4].second;
-    }
-
+    
     return MetaData(pdata);
 }
 
@@ -64,9 +49,8 @@ int main(int argc, char *argv[])
         }
 
         string audio = boost::filesystem::system_complete(boost::filesystem::path(argv[1])).string();
-        string command("ffmpeg -i ");
+        string command("MediaInfo ");
         command.append(audio);
-        command.append(" 2>&1");
 
         FILE *pf = nullptr;
         char buffer[1024 * 5];
@@ -78,7 +62,7 @@ int main(int argc, char *argv[])
         pf = popen(command.c_str(), "r");
 #endif
         if (!pf) {
-            throw logic_error("cannot access ffmpeg");
+            throw logic_error("cannot access MediaInfo");
         }
 
         fread(buffer, sizeof(char), sizeof(buffer), pf);

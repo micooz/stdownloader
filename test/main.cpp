@@ -25,15 +25,11 @@ int main()
     regexs["chartmusic"  ]  = "WL\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\", \"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\);";
     regexs["down"        ]  = "WrtSongLine\\(\"(\\d+)\", \"(.*?)\", \"(.*?)\\s\", \"(\\d{0,})\", \"(\\d{0,})\", \"(.*?)\", \"(.*?)\"\\);";
 
-    Value parse;
-    parse["first"]  = "([a-z]+)\\s+:\\s(.*?)\\n";
-    parse["second"] = "Duration:\\s(.*?),\\sstart:\\s(.*?),\\sbitrate:\\s(.*?)\\n.+?Audio:\\s(.*?)\\n";
-
     //
     Value root;
     root["urls"     ]  = urls;
     root["regexs"   ]  = regexs;
-    root["parse"    ]  = parse;
+    root["parse"    ]  = "([ a-zA-Z()]+?)\\s+:\\s(.*?)\\n";
     root["useragent"]  = "Mozilla/5.0 (Windows NT 6.3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36";
     root["cachepath"]  = "./cache/";
     //
