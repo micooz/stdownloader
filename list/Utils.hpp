@@ -7,7 +7,7 @@
 namespace songtaste
 {
 
-    static std::string convertSpace(const std::string &source, bool reverse = false)
+    static inline std::string convertSpace(const std::string &source, bool reverse = false)
     {
         typedef std::string::const_iterator iterator;
         iterator begin = source.cbegin();
@@ -38,7 +38,7 @@ namespace songtaste
         return result;
     }
 
-    static void setUserAgent(const std::string &ua, avhttp::http_stream *http)
+    static inline void setUserAgent(const std::string &ua, avhttp::http_stream *http)
     {
         if (!ua.empty()) {
             avhttp::request_opts opt;

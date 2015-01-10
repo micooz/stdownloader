@@ -13,17 +13,11 @@
 
 #define SAFERELEASE(p) if(p) {delete p; p = nullptr;}
 
+#include <json/json.h>
 #include <string>
-
-namespace Json
-{
-    class Value;
-}
 
 namespace songtaste
 {
-    class Json::Value;
-
     class IListStruct
     {
     public:
@@ -32,11 +26,11 @@ namespace songtaste
         virtual ~IListStruct();
 
         virtual const Json::Value toJson(void) = 0;
-        
+
         virtual void parseJson(const std::string &jsonstr) = 0;
-        
+
         virtual void parseJson(const Json::Value &jsonval) = 0;
-        
+
     };
 
 }
