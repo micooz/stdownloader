@@ -47,7 +47,13 @@ namespace songtaste
             json["total"     ] = double(total);
             json["bytes/s"   ] = speed;
             Json::FastWriter writer;
+
+#if defined (WIN32) || defined (_WIN32)
             std::system("cls");
+#elif defined (linux)||defined (__linux__)
+            std::system("clear");
+#endif
+
             std::cout << writer.write(json);
         }
 
