@@ -1,50 +1,50 @@
 # StDownloader
 
-C++ÊµÏÖµÄ¿çÆ½Ì¨ songtaste.com ÒôÀÖÏÂÔØ¹¤¾ß
+C++å®žçŽ°çš„è·¨å¹³å° songtaste.com éŸ³ä¹ä¸‹è½½å·¥å…·
 
-# ÏîÄ¿Ö÷Ò³
+# é¡¹ç›®ä¸»é¡µ
 
-http://git.oschina.net/micooz/StDownloader
+https://github.com/micooz/stdownloader
 
-# ¿ª·¢»·¾³
+# å¼€å‘çŽ¯å¢ƒ
 
-QtCreator with MingGW 4.8 £¨32bit£©
+QtCreator with MingGW 4.8 ï¼ˆ32bitï¼‰
 
-# Ê¹ÓÃµÄ¿â
+# ä½¿ç”¨çš„åº“
 
-* boost 1.56 £¨Î´°üº¬ÔÚÏîÄ¿ÄÚ£©
+* boost 1.56 ï¼ˆæœªåŒ…å«åœ¨é¡¹ç›®å†…ï¼‰
 
 * avhttp 2.9.9
 
 * jsoncpp 0.7.0
 
-* ffmpeg £¨Ìá¹©¶þ½øÖÆ³ÌÐò£©
+* ffmpeg ï¼ˆæä¾›äºŒè¿›åˆ¶ç¨‹åºï¼‰
 
-# ±àÒë
+# ç¼–è¯‘
 
-ÏÂÃæ¼òµ¥½éÉÜÕâÌ×¹¤¾ßÔÚ`Windows`ÒÔ¼°`Linux`ÏÂµÄ±àÒë·½·¨¡£
+ä¸‹é¢ç®€å•ä»‹ç»è¿™å¥—å·¥å…·åœ¨`Windows`ä»¥åŠ`Linux`ä¸‹çš„ç¼–è¯‘æ–¹æ³•ã€‚
 
-±àÒëÇ°±ØÐë¾ß±¸ÏÂÁÐÌõ¼þ£º
+ç¼–è¯‘å‰å¿…é¡»å…·å¤‡ä¸‹åˆ—æ¡ä»¶ï¼š
 
-* boost_1_56_0 ¼°ÒÔÉÏ
+* boost_1_56_0 åŠä»¥ä¸Š
 
-* cmake 2.8 ¼°ÒÔÉÏ
+* cmake 2.8 åŠä»¥ä¸Š
 
-* ±àÒëÆ÷ MinGW£¨Windows£© 4.8 ¼°ÒÔÉÏ£»g++ 4.8£¨Linux£©¼°ÒÔÉÏ
+* ç¼–è¯‘å™¨ MinGWï¼ˆWindowsï¼‰ 4.8 åŠä»¥ä¸Šï¼›g++ 4.8ï¼ˆLinuxï¼‰åŠä»¥ä¸Š
 
-## ±àÒëboost
+## ç¼–è¯‘boost
 
-boost¿â¹Ù·½ÍøÕ¾Ìá¹©ÁË×îÐÂ°æ±¾µÄboost±àÒë·½·¨£º
+booståº“å®˜æ–¹ç½‘ç«™æä¾›äº†æœ€æ–°ç‰ˆæœ¬çš„boostç¼–è¯‘æ–¹æ³•ï¼š
 
 ### Windows
 
 http://www.boost.org/doc/libs/1_57_0/more/getting_started/windows.html#prepare-to-use-a-boost-library-binary
 
-### Unix£¨Linux£¬MacOS£©
+### Unixï¼ˆLinuxï¼ŒMacOSï¼‰
 
 http://www.boost.org/doc/libs/1_57_0/more/getting_started/unix-variants.html#easy-build-and-install
 
-## ±àÒëjsoncpp
+## ç¼–è¯‘jsoncpp
 
 ### Windows
 
@@ -62,24 +62,24 @@ $ sudo cmake .
 $ sudo make
 ```
 
-Íê³ÉºóÔÚ`lib`ÏÂ¿ÉÒÔÕÒµ½`libjsoncpp.a`
+å®ŒæˆåŽåœ¨`lib`ä¸‹å¯ä»¥æ‰¾åˆ°`libjsoncpp.a`
 
-## ±àÒëStDownloader
+## ç¼–è¯‘StDownloader
 
-ËäÈ»Ê¹ÓÃQt£¨qmake£©½øÐÐ¿ª·¢£¬µ«ÎªÁË¼ò±ã£¬Ê¹ÓÃ`cmake`½øÐÐ¿ìËÙ¹¹½¨¡£
+è™½ç„¶ä½¿ç”¨Qtï¼ˆqmakeï¼‰è¿›è¡Œå¼€å‘ï¼Œä½†ä¸ºäº†ç®€ä¾¿ï¼Œä½¿ç”¨`cmake`è¿›è¡Œå¿«é€Ÿæž„å»ºã€‚
 
 ### Windows
 
-ÏÂÃæÒÔMinGWÎªÀý£¬¼Ù¶¨boost¸ùÄ¿Â¼ÔÚ`D:/libs/boost_1_56_0`£¨¼ûCMakeLists.txt£©
+ä¸‹é¢ä»¥MinGWä¸ºä¾‹ï¼Œå‡å®šboostæ ¹ç›®å½•åœ¨`D:/libs/boost_1_56_0`ï¼ˆè§CMakeLists.txtï¼‰
 
-ÔÚÏîÄ¿¸ùÄ¿Â¼Ö´ÐÐ£º
+åœ¨é¡¹ç›®æ ¹ç›®å½•æ‰§è¡Œï¼š
 
 ```
 $ cmake . -G "MinGW Makefiles"
 $ mingw32-make
 ```
 
-Èç¹ûÕÒ²»µ½boostÏà¹ØÍ·ÎÄ¼þ£¬ÇëÔÚ¶¥²ãµÄ`CMakeLists`ÖÐÐÞ¸Ä`BOOST_ROOT`ÉèÖÃ¡£
+å¦‚æžœæ‰¾ä¸åˆ°boostç›¸å…³å¤´æ–‡ä»¶ï¼Œè¯·åœ¨é¡¶å±‚çš„`CMakeLists`ä¸­ä¿®æ”¹`BOOST_ROOT`è®¾ç½®ã€‚
 
 ### Linux
 
@@ -88,23 +88,23 @@ $ sudo cmake .
 $ sudo make
 ```
 
-# ¹¤¾ß¼ò½é
+# å·¥å…·ç®€ä»‹
 
-Ö÷ÒªÌá¹©Ò»Ö÷Èë¿Ú£¨songtaste£©¡¢ÁÐ±í£¨list£©¡¢ÏÂÔØ£¨down£©¡¢½âÎö£¨parse£©¹¤¾ß¡£
+ä¸»è¦æä¾›ä¸€ä¸»å…¥å£ï¼ˆsongtasteï¼‰ã€åˆ—è¡¨ï¼ˆlistï¼‰ã€ä¸‹è½½ï¼ˆdownï¼‰ã€è§£æžï¼ˆparseï¼‰å·¥å…·ã€‚
 
-## Ö÷Èë¿Ú£¨songtaste£©
+## ä¸»å…¥å£ï¼ˆsongtasteï¼‰
 
-Èë¿Ú³ÌÐòÊÇµ÷ÓÃÆäËû¸½Êô¹¤¾ßµÄÍ¾¾¶Ö®Ò»£¬Ö´ÐÐÃüÁîÊ±½öÐèÒª¸øÈë¿Ú´«µÝ×Ó³ÌÐòÃûºÍÏàÓ¦²ÎÊý¼´¿É¡£
+å…¥å£ç¨‹åºæ˜¯è°ƒç”¨å…¶ä»–é™„å±žå·¥å…·çš„é€”å¾„ä¹‹ä¸€ï¼Œæ‰§è¡Œå‘½ä»¤æ—¶ä»…éœ€è¦ç»™å…¥å£ä¼ é€’å­ç¨‹åºåå’Œç›¸åº”å‚æ•°å³å¯ã€‚
 
-## ÁÐ±í£¨list£©
+## åˆ—è¡¨ï¼ˆlistï¼‰
 
-Ä¿Ç°ÁÐ±í¹¦ÄÜÖ§³Ö¡°´ó¼ÒÍÆ¼ö¡±¡¢¡°ÒôÀÖ·ÖÀà¡±¡¢¡°Ò»ÖÜÅÅÐÐ¡±µÄÏà¹ØÁÐ±íºÍÒôÀÖÁÐ±í£¬Ö§³Ö·ÖÒ³¡£
+ç›®å‰åˆ—è¡¨åŠŸèƒ½æ”¯æŒâ€œå¤§å®¶æŽ¨èâ€ã€â€œéŸ³ä¹åˆ†ç±»â€ã€â€œä¸€å‘¨æŽ’è¡Œâ€çš„ç›¸å…³åˆ—è¡¨å’ŒéŸ³ä¹åˆ—è¡¨ï¼Œæ”¯æŒåˆ†é¡µã€‚
 
-Îª·½±ãÖ®ºó¿ª·¢µÄGUI³ÌÐòµÄ½âÎö£¬ËùÓÐ½á¹û¾ùÒÔjson¸ñÊ½Êä³ö¡£ËùÓÐÁÐ±í¾ùÖ§³Ö»º´æ¡£
+ä¸ºæ–¹ä¾¿ä¹‹åŽå¼€å‘çš„GUIç¨‹åºçš„è§£æžï¼Œæ‰€æœ‰ç»“æžœå‡ä»¥jsonæ ¼å¼è¾“å‡ºã€‚æ‰€æœ‰åˆ—è¡¨å‡æ”¯æŒç¼“å­˜ã€‚
 
-### Ê¹ÓÃÊ¾Àý
+### ä½¿ç”¨ç¤ºä¾‹
 
-**²é¿´°ïÖú**
+**æŸ¥çœ‹å¸®åŠ©**
 
 ```
 $ songtaste list
@@ -112,97 +112,97 @@ or
 $ songtaste list --help
 ```
 
-**´ó¼ÒÍÆ¼ö**
+**å¤§å®¶æŽ¨è**
 
 ```
 $ songtaste list --recommend
-#·ÖÒ³
+#åˆ†é¡µ
 $ songtaste list --recommend --page 3
 ```
 
-**·ÖÀàÁÐ±í**
+**åˆ†ç±»åˆ—è¡¨**
 
 ```
 $ songtaste list --category
 ```
 
-**·ÖÀàÖÐµÄÒôÀÖÁÐ±í**
+**åˆ†ç±»ä¸­çš„éŸ³ä¹åˆ—è¡¨**
 
 ```
 $ songtaste list --catsong --catid 2
 $ songtaste list --catsong --catid 2 --page 2
 ```
 
-**ÖÜÁÐ±í**
+**å‘¨åˆ—è¡¨**
 
 ```
 $ songtaste list --week
 ```
 
-**±¾ÖÜ×î¼Ñ¸èÇú**
+**æœ¬å‘¨æœ€ä½³æ­Œæ›²**
 
 ```
 $ songtaste list --weekchart
 ```
 
-ÐèÒª»º´æ¹¦ÄÜ¿ÉÒÔÔÚ **config.json** ÖÐÅäÖÃ»º´æÂ·¾¶£¬È»ºó¸øÃüÁîÌí¼Ó **--cache** Ñ¡Ïî¡£
+éœ€è¦ç¼“å­˜åŠŸèƒ½å¯ä»¥åœ¨ **config.json** ä¸­é…ç½®ç¼“å­˜è·¯å¾„ï¼Œç„¶åŽç»™å‘½ä»¤æ·»åŠ  **--cache** é€‰é¡¹ã€‚
 
-## ÏÂÔØ£¨down£©
+## ä¸‹è½½ï¼ˆdownï¼‰
 
-ÏÂÔØ³ÌÐò¿ÉÒÔÊµÊ±ÏÔÊ¾ÏÂÔØ½ø¶ÈºÍÏÂÔØËÙ¶È£¬²¢¸ø³öÎÄ¼þ´óÐ¡µÈ±ØÒªÐÅÏ¢¡£
+ä¸‹è½½ç¨‹åºå¯ä»¥å®žæ—¶æ˜¾ç¤ºä¸‹è½½è¿›åº¦å’Œä¸‹è½½é€Ÿåº¦ï¼Œå¹¶ç»™å‡ºæ–‡ä»¶å¤§å°ç­‰å¿…è¦ä¿¡æ¯ã€‚
 
-### Ê¹ÓÃÊ¾Àý
+### ä½¿ç”¨ç¤ºä¾‹
 
-**²é¿´°ïÖú**
+**æŸ¥çœ‹å¸®åŠ©**
 
 ```
 $ songtaste down
 ```
 
-**ÏÂÔØÖ¸¶¨idµÄÒôÀÖ**
+**ä¸‹è½½æŒ‡å®šidçš„éŸ³ä¹**
 
 ```
 $ songtaste down --id 3468640
 ```
 
-**»ñÈ¡Ö¸¶¨idµÄÒôÀÖÐÅÏ¢**
+**èŽ·å–æŒ‡å®šidçš„éŸ³ä¹ä¿¡æ¯**
 
 ```
 $ songtaste down --id 3468640 --info
 ```
 
-**ÏÂÔØµ½Ö¸¶¨Ä¿Â¼**
+**ä¸‹è½½åˆ°æŒ‡å®šç›®å½•**
 
 ```
 $ songtaste down --id 3468640 --dir ./
 ```
 
-**ÏÂÔØµ½Ö¸¶¨Ä¿Â¼²¢ÖØÃüÃû** £¨Ô­Ê¼Ãû¿ÉÄÜÊÇ·Ç·¨µÄÎÄ¼þÃû£©
+**ä¸‹è½½åˆ°æŒ‡å®šç›®å½•å¹¶é‡å‘½å** ï¼ˆåŽŸå§‹åå¯èƒ½æ˜¯éžæ³•çš„æ–‡ä»¶åï¼‰
 
 ```
 $ songtaste down --id 3468640 --dir ./music --name my_music
 ```
 
-## ½âÎö£¨parse£©
+## è§£æžï¼ˆparseï¼‰
 
-Í¨¹ýffmpeg½âÎöÒôÀÖ¿ÉÒÔµÃµ½Ô­Ê¼µÄ¸èÃû×÷ÕßµÈÐÅÏ¢¡£
+é€šè¿‡ffmpegè§£æžéŸ³ä¹å¯ä»¥å¾—åˆ°åŽŸå§‹çš„æ­Œåä½œè€…ç­‰ä¿¡æ¯ã€‚
 
-### Ê¹ÓÃÊ¾Àý
+### ä½¿ç”¨ç¤ºä¾‹
 
-**²é¿´°ïÖú**
+**æŸ¥çœ‹å¸®åŠ©**
 
 ```
 $ songtaste parse
 ```
 
-**½âÎöÖ¸¶¨ÒôÀÖ** £¨½«¼ä½Óµ÷ÓÃffmpeg£©
+**è§£æžæŒ‡å®šéŸ³ä¹** ï¼ˆå°†é—´æŽ¥è°ƒç”¨ffmpegï¼‰
 
 ```
 $ songtaste parse test.mp3
 ```
 
-# ÃâÔðÉùÃ÷
+# å…è´£å£°æ˜Ž
 
-±¾¹¤¾ßËùÈ¡µÃµÄ×ÊÔ´¾ùÀ´×Ô»¥ÁªÍø£¬½ö¹©Ñ§Ï°½»Á÷¡£
+æœ¬å·¥å…·æ‰€å–å¾—çš„èµ„æºå‡æ¥è‡ªäº’è”ç½‘ï¼Œä»…ä¾›å­¦ä¹ äº¤æµã€‚
 
-ÈçÔÚÊ¹ÓÃ¹ý³ÌÖÐÇÖ·¸ÁËÔ­ÒôÀÖµÄ°æÈ¨£¬ÇëÓèÒÔÉ¾³ý£¬Î´¾­Ô­°æÈ¨×÷ÕßÐí¿É£¬ÈÎºÎÈË²»µÃÉÃ×÷ËüÓÃ£¡ÇëÔÚÏÂÔØ24Ð¡Ê±ÄÚÉ¾³ý£¡Îª×ðÖØ×÷Õß°æÈ¨£¬Çë¹ºÂòÔ­°æ×÷Æ·¡£
+å¦‚åœ¨ä½¿ç”¨è¿‡ç¨‹ä¸­ä¾µçŠ¯äº†åŽŸéŸ³ä¹çš„ç‰ˆæƒï¼Œè¯·äºˆä»¥åˆ é™¤ï¼Œæœªç»åŽŸç‰ˆæƒä½œè€…è®¸å¯ï¼Œä»»ä½•äººä¸å¾—æ“…ä½œå®ƒç”¨ï¼è¯·åœ¨ä¸‹è½½24å°æ—¶å†…åˆ é™¤ï¼ä¸ºå°Šé‡ä½œè€…ç‰ˆæƒï¼Œè¯·è´­ä¹°åŽŸç‰ˆä½œå“ã€‚
